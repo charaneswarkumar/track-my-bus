@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { BusIcon, Navigation } from 'lucide-react';
-import { buses, busRoutes, busStops } from '../utils/mockData';
+import { buses as mockBuses, busRoutes, busStops } from '../utils/mockData';
 import { Bus } from '../utils/types';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -9,9 +8,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 interface MapProps {
   selectedBus: Bus | null;
   onBusSelect: (bus: Bus) => void;
+  buses?: Bus[];
 }
 
-const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect }) => {
+const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [mapboxToken, setMapboxToken] = useState<string>('');
   const [showTokenInput, setShowTokenInput] = useState(true);
@@ -61,7 +61,6 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect }) => {
     }
   };
 
-  // Add bus markers to the map
   const addBusMarkers = () => {
     if (!map.current) return;
     
@@ -100,8 +99,7 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect }) => {
       markersRef.current[bus.id] = marker;
     });
   };
-  
-  // Add bus stops to the map
+
   const addBusStops = () => {
     if (!map.current) return;
     
@@ -124,8 +122,7 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect }) => {
         .addTo(map.current!);
     });
   };
-  
-  // Show route for selected bus
+
   const showBusRoute = (bus: Bus) => {
     if (!map.current) return;
     
@@ -185,14 +182,12 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect }) => {
     ], { padding: 50 });
   };
 
-  // Update markers when buses change
   useEffect(() => {
     if (map.current) {
       addBusMarkers();
     }
   }, [buses]);
 
-  // Show route when a bus is selected
   useEffect(() => {
     if (map.current && selectedBus) {
       showBusRoute(selectedBus);
@@ -209,7 +204,6 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect }) => {
     }
   }, [selectedBus]);
 
-  // Clean up on unmount
   useEffect(() => {
     return () => {
       map.current?.remove();

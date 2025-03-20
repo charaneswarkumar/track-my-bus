@@ -123,6 +123,7 @@ const Index = () => {
             <Map 
               selectedBus={selectedBus} 
               onBusSelect={handleBusSelect} 
+              buses={allBuses}
             />
             
             <div className="mt-4 flex justify-between items-center">
