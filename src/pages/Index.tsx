@@ -7,12 +7,14 @@ import BusList from '../components/BusList';
 import BusDetail from '../components/BusDetail';
 import { buses } from '../utils/mockData';
 import { Bus } from '../utils/types';
+import { toast } from '@/components/ui/use-toast';
 
 const Index = () => {
   const [allBuses, setAllBuses] = useState<Bus[]>(buses);
-  const [filteredBuses, setFilteredBuses] = useState<Bus[]>(buses);
+  const [filteredBuses, setFilteredBuses] = useState<Bus[]>(buses.slice(0, 10)); // Initially show only first 10 buses
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
   const [showBusDetails, setShowBusDetails] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
   
   // Update bus locations every few seconds (simulate real-time updates)
   useEffect(() => {
@@ -38,23 +40,62 @@ const Index = () => {
           return bus;
         })
       );
+      
+      // Occasionally change a bus status for demonstration
+      if (Math.random() > 0.95) {
+        const randomIndex = Math.floor(Math.random() * allBuses.length);
+        const statuses: Array<'running' | 'delayed' | 'stopped'> = ['running', 'delayed', 'stopped'];
+        const newStatus = statuses[Math.floor(Math.random() * statuses.length)];
+        
+        setAllBuses(prevBuses => {
+          const newBuses = [...prevBuses];
+          if (newBuses[randomIndex].status !== newStatus) {
+            newBuses[randomIndex] = {
+              ...newBuses[randomIndex],
+              status: newStatus
+            };
+            
+            // Show toast notification for status change
+            toast({
+              title: `Status Update: ${newBuses[randomIndex].busNumber}`,
+              description: `Bus is now ${newStatus}`,
+              variant: newStatus === 'running' ? 'default' : newStatus === 'delayed' ? 'warning' : 'destructive',
+              duration: 3000
+            });
+          }
+          return newBuses;
+        });
+      }
     }, 5000);
     
     return () => clearInterval(interval);
-  }, []);
-  
-  // Update filtered buses when all buses are updated
-  useEffect(() => {
-    setFilteredBuses(allBuses);
   }, [allBuses]);
   
+  // Update filtered buses when search is not active
+  useEffect(() => {
+    if (!searchActive) {
+      setFilteredBuses(allBuses.slice(0, 10)); // Show first 10 buses when not searching
+    }
+  }, [allBuses, searchActive]);
+  
   const handleSearchResults = (results: Bus[]) => {
-    setFilteredBuses(results.length > 0 ? results : allBuses);
+    if (results.length === 0 && !searchActive) {
+      // If no search results and search is not active, show first 10 buses
+      setFilteredBuses(allBuses.slice(0, 10));
+    } else {
+      setFilteredBuses(results);
+      setSearchActive(results.length > 0);
+    }
   };
   
   const handleBusSelect = (bus: Bus) => {
     setSelectedBus(bus);
     setShowBusDetails(true);
+    
+    // Add selected bus to filtered list if it's not already there
+    if (!filteredBuses.some(b => b.id === bus.id)) {
+      setFilteredBuses(prev => [bus, ...prev]);
+    }
   };
   
   const handleCloseBusDetails = () => {
@@ -83,6 +124,27 @@ const Index = () => {
               selectedBus={selectedBus} 
               onBusSelect={handleBusSelect} 
             />
+            
+            <div className="mt-4 flex justify-between items-center">
+              <div className="flex space-x-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="text-xs">Running</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                  <span className="text-xs">Delayed</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <span className="text-xs">Stopped</span>
+                </div>
+              </div>
+              
+              <div className="text-xs text-neutral-500">
+                Total buses: {allBuses.length} | Showing: {filteredBuses.length}
+              </div>
+            </div>
           </div>
           
           <div className="flex flex-col h-[calc(100vh-12rem)]">

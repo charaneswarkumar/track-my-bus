@@ -27,6 +27,42 @@ export const drivers: Driver[] = [
     phoneNumber: '+91 9876543213',
     photo: 'https://randomuser.me/api/portraits/men/4.jpg',
   },
+  {
+    id: 'd5',
+    name: 'Ramesh Reddy',
+    phoneNumber: '+91 9876543214',
+    photo: 'https://randomuser.me/api/portraits/men/5.jpg',
+  },
+  {
+    id: 'd6',
+    name: 'Kiran Rao',
+    phoneNumber: '+91 9876543215',
+    photo: 'https://randomuser.me/api/portraits/men/6.jpg',
+  },
+  {
+    id: 'd7',
+    name: 'Praveen Kumar',
+    phoneNumber: '+91 9876543216',
+    photo: 'https://randomuser.me/api/portraits/men/7.jpg',
+  },
+  {
+    id: 'd8',
+    name: 'Naresh Varma',
+    phoneNumber: '+91 9876543217',
+    photo: 'https://randomuser.me/api/portraits/men/8.jpg',
+  },
+  {
+    id: 'd9',
+    name: 'Venkat Rao',
+    phoneNumber: '+91 9876543218',
+    photo: 'https://randomuser.me/api/portraits/men/9.jpg',
+  },
+  {
+    id: 'd10',
+    name: 'Ganesh Babu',
+    phoneNumber: '+91 9876543219',
+    photo: 'https://randomuser.me/api/portraits/men/10.jpg',
+  },
 ];
 
 // Mock Bus Stops
@@ -78,6 +114,30 @@ export const busStops: BusStop[] = [
     location: { latitude: 17.0685, longitude: 82.2943 },
     timeToReach: '18 min',
   },
+  {
+    id: 's9',
+    name: 'Annavaram',
+    location: { latitude: 17.2828, longitude: 82.4111 },
+    timeToReach: '40 min',
+  },
+  {
+    id: 's10',
+    name: 'Tuni',
+    location: { latitude: 17.3580, longitude: 82.5487 },
+    timeToReach: '50 min',
+  },
+  {
+    id: 's11',
+    name: 'Elamanchili',
+    location: { latitude: 17.5491, longitude: 82.8590 },
+    timeToReach: '65 min',
+  },
+  {
+    id: 's12',
+    name: 'Anakapalle',
+    location: { latitude: 17.6882, longitude: 83.0040 },
+    timeToReach: '75 min',
+  },
 ];
 
 // Mock Bus Routes
@@ -106,59 +166,86 @@ export const busRoutes: BusRoute[] = [
     stops: [busStops[0], busStops[1], busStops[7], busStops[2]],
     description: 'Covering eastern villages and ending at Kakinada',
   },
+  {
+    id: 'r5',
+    name: 'Annavaram Route',
+    stops: [busStops[0], busStops[1], busStops[7], busStops[8]],
+    description: 'Route to Annavaram temple town',
+  },
+  {
+    id: 'r6',
+    name: 'Tuni Express Route',
+    stops: [busStops[0], busStops[1], busStops[8], busStops[9]],
+    description: 'Express route to Tuni via Annavaram',
+  },
+  {
+    id: 'r7',
+    name: 'Vizag Extended Route',
+    stops: [busStops[0], busStops[9], busStops[10], busStops[11]],
+    description: 'Extended route covering towns towards Visakhapatnam',
+  },
 ];
 
-// Mock Buses
-export const buses: Bus[] = [
-  {
-    id: 'b1',
-    busNumber: 'PEC-001',
-    routeId: 'r1',
-    driverId: 'd1',
-    currentLocation: { latitude: 17.0322, longitude: 82.2440 },
-    currentSpeed: 42,
-    status: 'running',
-    capacity: 50,
-    estimatedArrival: '08:45 AM',
-    lastUpdated: new Date(),
-  },
-  {
-    id: 'b2',
-    busNumber: 'PEC-002',
-    routeId: 'r2',
-    driverId: 'd2',
-    currentLocation: { latitude: 17.0400, longitude: 82.0100 },
-    currentSpeed: 55,
-    status: 'running',
-    capacity: 45,
-    estimatedArrival: '09:10 AM',
-    lastUpdated: new Date(),
-  },
-  {
-    id: 'b3',
-    busNumber: 'PEC-003',
-    routeId: 'r3',
-    driverId: 'd3',
-    currentLocation: { latitude: 17.1200, longitude: 82.2400 },
-    currentSpeed: 0,
-    status: 'stopped',
-    capacity: 50,
-    estimatedArrival: '09:30 AM',
-    lastUpdated: new Date(),
-  },
-  {
-    id: 'b4',
-    busNumber: 'PEC-004',
-    routeId: 'r4',
-    driverId: 'd4',
-    currentLocation: { latitude: 17.0500, longitude: 82.2700 },
-    currentSpeed: 35,
-    status: 'delayed',
-    capacity: 45,
-    estimatedArrival: '09:45 AM',
-    lastUpdated: new Date(),
-  },
-];
+// Generate 50 buses with random parameters
+const generateBuses = (count: number): Bus[] => {
+  const buses: Bus[] = [];
+  const statuses: Array<'running' | 'delayed' | 'stopped' | 'completed'> = ['running', 'delayed', 'stopped', 'completed'];
+  const routeIds = busRoutes.map(route => route.id);
+  const driverIds = drivers.map(driver => driver.id);
+  
+  for (let i = 1; i <= count; i++) {
+    // Generate padded bus number (e.g., PEC-001, PEC-002)
+    const busNumber = `PEC-${i.toString().padStart(3, '0')}`;
+    
+    // Get random route id
+    const routeId = routeIds[Math.floor(Math.random() * routeIds.length)];
+    const route = busRoutes.find(route => route.id === routeId);
+    
+    // Get random driver id, cycling through available drivers
+    const driverId = driverIds[i % driverIds.length];
+    
+    // Get random status
+    const status = statuses[Math.floor(Math.random() * (statuses.length - 1))]; // Excluding 'completed' most of the time
+    
+    // Generate random location along the route
+    const baseStop = route ? route.stops[Math.floor(Math.random() * route.stops.length)] : busStops[0];
+    
+    // Add some randomness to location
+    const latRandom = (Math.random() - 0.5) * 0.02;
+    const lngRandom = (Math.random() - 0.5) * 0.02;
+    
+    // Random speed between 0 and 60 km/h
+    const speed = status === 'running' ? Math.floor(Math.random() * 60) + 20 : 
+                  status === 'delayed' ? Math.floor(Math.random() * 20) + 5 : 0;
+    
+    // Random time strings for estimated arrival
+    const hours = Math.floor(Math.random() * 12) + 1;
+    const minutes = Math.floor(Math.random() * 60);
+    const ampm = Math.random() > 0.5 ? 'AM' : 'PM';
+    const estimatedArrival = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+    
+    buses.push({
+      id: `b${i}`,
+      busNumber,
+      routeId,
+      driverId,
+      currentLocation: {
+        latitude: baseStop.location.latitude + latRandom,
+        longitude: baseStop.location.longitude + lngRandom
+      },
+      currentSpeed: speed,
+      status,
+      capacity: Math.floor(Math.random() * 15) + 40, // Random capacity between 40 and 55
+      estimatedArrival,
+      lastUpdated: new Date()
+    });
+  }
+  
+  return buses;
+};
+
+// Generate 50 buses
+export const buses: Bus[] = generateBuses(50);
 
 // Helper function to get bus details with related data
 export const getBusDetails = (busId: string) => {
