@@ -59,7 +59,7 @@ const Index = () => {
             toast({
               title: `Status Update: ${newBuses[randomIndex].busNumber}`,
               description: `Bus is now ${newStatus}`,
-              variant: newStatus === 'running' ? 'default' : newStatus === 'delayed' ? 'warning' : 'destructive',
+              variant: newStatus === 'running' ? 'default' : 'destructive',
               duration: 3000
             });
           }
