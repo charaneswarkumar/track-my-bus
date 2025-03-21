@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Bus as BusType, BusRoute, Driver } from '../utils/types';
 import { getBusDetails, getRouteDetails } from '../utils/mockData';
-import { User, MapPin, Phone, Clock, Route, X, Bus as BusIcon, Calendar, Fuel } from 'lucide-react';
+import { User, MapPin, Phone, Clock, Route, X, Bus as BusIcon, Calendar, Fuel, Users } from 'lucide-react';
 
 interface BusDetailProps {
   bus: BusType;
