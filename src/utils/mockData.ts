@@ -1,6 +1,7 @@
+
 import { Bus, BusRoute, BusStop, Driver, YearGroup } from './types';
 
-// Mock Drivers - Updated with the provided data
+// Mock Drivers - Based on the provided data table
 export const drivers: Driver[] = [
   { id: 'd1', name: 'Ch Nageswararao', phoneNumber: '+91 9876543210' },
   { id: 'd2', name: 'B Raju', phoneNumber: '+91 9876543211' },
@@ -149,22 +150,21 @@ export const busStops: BusStop[] = [
   { id: 's28', name: 'Neeladrirao Peta', location: getLocationWithOffset(locations.pragatiEngCollege, 1.5), timeToReach: '25 min' },
   { id: 's29', name: 'Jaggampeta', location: getLocationWithOffset(locations.pragatiEngCollege, 1.6), timeToReach: '30 min' },
   { id: 's30', name: 'Katravulapalli', location: getLocationWithOffset(locations.pragatiEngCollege, 1.7), timeToReach: '35 min' },
-  // Add more stops as needed...
 ];
 
-// Create additional bus routes for the new buses
+// Create bus routes from the provided data
 export const busRoutes: BusRoute[] = [
   {
     id: 'r21',
     routeNumber: '21',
-    name: 'Pulagurtha-Machavaram-Someswaram-Lolla',
+    name: 'Pulagurtha,Machavaram,Someswaram,Lolla',
     stops: [busStops[0], busStops[17], busStops[18], busStops[19], busStops[20]],
     description: 'Route 21 connecting Pragati Engineering College to surrounding villages'
   },
   {
     id: 'r70',
     routeNumber: '70',
-    name: 'Draksharamam-Tallapalem',
+    name: 'Draksharamam,Tallapalem',
     stops: [busStops[0], busStops[16], busStops[21]],
     description: 'Route 70 connecting college to Draksharamam and Tallapalem'
   },
@@ -178,14 +178,14 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r24',
     routeNumber: '24',
-    name: 'Mandapeta-Tapeswaram-Ippanapadu-Iltd Anaparthy',
+    name: 'Mandapeta,Tapeswaram,Ippanapadu,Iltd Anaparthy',
     stops: [busStops[0], busStops[9], busStops[23], busStops[24], busStops[10]],
     description: 'Route 24 covering extended areas around Mandapeta and Anaparthy'
   },
   {
     id: 'r36',
     routeNumber: '36',
-    name: 'Ramachandrapuram Mamidada Biccavolu',
+    name: 'Ramachandrapuram Mamaidada Biccavolu',
     stops: [busStops[0], busStops[25], busStops[26], busStops[11]],
     description: 'Route 36 connecting to Ramachandrapuram and surrounding areas'
   },
@@ -206,29 +206,28 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r32',
     routeNumber: '32',
-    name: 'Neeladrirao Peta-Jaggampeta-Katravulapalli-Surampalem',
+    name: 'Neeladrirao Peta, Jaggampeta,Katravulapalli,Surampalem',
     stops: [busStops[0], busStops[27], busStops[28], busStops[29], busStops[1]],
     description: 'Route 32 covering northern areas including Jaggampeta'
   },
   {
     id: 'r34',
     routeNumber: '34',
-    name: 'Kadakuduru-Pedapudi-Peddada',
+    name: 'Kadakuduru,Pedapudi,Peddada',
     stops: [busStops[0], busStops[12], busStops[13]],
     description: 'Route 34 covering eastern areas including Pedapudi and Peddada'
   },
   {
     id: 'r33',
     routeNumber: '33',
-    name: 'Rayavaram-Tossipudi-Balabhadrapuram',
+    name: 'Rayavaram,Tossipudi,Balabhadrapuram',
     stops: [busStops[0], busStops[14]],
     description: 'Route 33 serving areas around Rayavaram'
   },
-  // Additional routes for the new buses
   {
     id: 'r56',
     routeNumber: '56',
-    name: 'Nadakuduru-Turangi',
+    name: 'Nadakuduru,Turangi',
     stops: [busStops[0], busStops[12], busStops[14]],
     description: 'Route 56 connecting Nadakuduru and Turangi'
   },
@@ -242,49 +241,49 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r58',
     routeNumber: '58',
-    name: 'Gokulam-Vidhyuthnagar-Sv Rangarao Statue-Rajendranagar',
+    name: 'Gokulam,Vidhyuthnagar,Sv Rangarao Statue,Rajendranagar',
     stops: [busStops[0], busStops[2]],
     description: 'Route 58 through Kakinada localities'
   },
   {
     id: 'r59',
     routeNumber: '59',
-    name: 'Anandh Complex-Ii Town Ps-Masid Center-Balajicheruvu-Tripurasundari Temple',
+    name: 'Anandh Complex,Ii Town Ps,Masid Center,Balajicheruvu,Tripurasundari Temple',
     stops: [busStops[0], busStops[2]],
     description: 'Route 59 through Kakinada city areas'
   },
   {
     id: 'r60',
     routeNumber: '60',
-    name: 'Nookalamma Temple-Subbayya Hotel-Gandhipark-Ontimamidi Jn',
+    name: 'Nookalamma Temple,Subbayya Hotel,Gandhipark,Ontimamidi Jn',
     stops: [busStops[0], busStops[2]],
     description: 'Route 60 through Kakinada city areas'
   },
   {
     id: 'r61',
     routeNumber: '61',
-    name: 'Sambhamurthy Nagar-Kalpana Jn-Tripurasundari Temple',
+    name: 'Sambhamurthy Nagar,Kalpana Jn,Tripurasundari Temple',
     stops: [busStops[0], busStops[2]],
     description: 'Route 61 through Kakinada city areas'
   },
   {
     id: 'r62',
     routeNumber: '62',
-    name: 'Dmart-Venkatnagar-Kokila-Sp Off-Ashram School',
+    name: 'Dmart,Venkatnagar,Kokila,Sp Off,Ashram School',
     stops: [busStops[0], busStops[2]],
     description: 'Route 62 through Kakinada city areas'
   },
   {
     id: 'r63',
     routeNumber: '63',
-    name: 'Rto Off Rd-Gangaraju Nagar-Ramanayyapeta Market',
+    name: 'Rto Off Rd,Gangaraju Nagar.Ramanayyapeta Market',
     stops: [busStops[0], busStops[2]],
     description: 'Route 63 through Kakinada city areas'
   },
   {
     id: 'r64',
     routeNumber: '64',
-    name: 'Dmart-Venkatnagar-Kokila-Sp Off-Ashram School',
+    name: 'Dmart,Venkatnagar,Kokila,Sp Off,Ashram School',
     stops: [busStops[0], busStops[2]],
     description: 'Route 64 through Kakinada city areas'
   },
@@ -298,14 +297,14 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r67',
     routeNumber: '67',
-    name: 'Turangi Indrapalem Musalammatemple-Z Bridge-Pratapnagar Bridge',
+    name: 'Turangi Indrapalem Musalammatemple,Z Bridge,Pratapnagar Bridge',
     stops: [busStops[0], busStops[2]],
     description: 'Route 67 through city areas'
   },
   {
     id: 'r68',
     routeNumber: '68',
-    name: 'Yeleswaram-Yarravaram-Krishnapuram-Burugupudi-Ramavaram',
+    name: 'Yeleswaram,Yarravaram,Krishnapuram,Burugupudi,Ramavaram',
     stops: [busStops[0], busStops[15]],
     description: 'Route 68 through northern villages'
   },
@@ -319,28 +318,28 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r12',
     routeNumber: '12',
-    name: 'Karapa-Penuguduru',
+    name: 'Karapa,Penuguduru',
     stops: [busStops[0], busStops[2]],
     description: 'Route 12 through Karapa and Penuguduru'
   },
   {
     id: 'r71',
     routeNumber: '71',
-    name: 'Ganaganapalli Center-Kovvada-Rameswaram-Madhavapatnam',
+    name: 'Ganaganapalli Center,Kovvada,Rameswaram,Madhavapatnam',
     stops: [busStops[0], busStops[2]],
     description: 'Route 71 through coastal villages'
   },
   {
     id: 'r72',
     routeNumber: '72',
-    name: 'Narsaraopeta-Mamidada-Biccavolu',
+    name: 'Narsaraopeta, Mamidada, Biccavolu',
     stops: [busStops[0], busStops[26], busStops[11]],
     description: 'Route 72 serving Mamidada and Biccavolu'
   },
   {
     id: 'r73',
     routeNumber: '73',
-    name: 'Draksharamam-Tallapalem',
+    name: 'Draksharamam,Tallapalem',
     stops: [busStops[0], busStops[16], busStops[21]],
     description: 'Route 73 connecting to Draksharamam and Tallapalem'
   },
@@ -354,7 +353,7 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r75',
     routeNumber: '75',
-    name: 'Pithapuram By Pass-Padagaya-Kumarapuram Fk Plem-Jalluru',
+    name: 'Pithapuram By Pass,Padagaya,Kumarapuram Fk Plem, Jalluru',
     stops: [busStops[0], busStops[6]],
     description: 'Route 75 through Pithapuram and villages'
   },
@@ -365,7 +364,6 @@ export const busRoutes: BusRoute[] = [
     stops: [busStops[0], busStops[7]],
     description: 'Route 76 through Gaigolupadu and Sarpavaram'
   },
-  // Add more routes for all 81 buses...
   {
     id: 'r77',
     routeNumber: '77',
@@ -376,28 +374,28 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r65',
     routeNumber: '65',
-    name: 'Sambhamurthy Nagar-Kalpana Jn-Tripurasundari Temple',
+    name: 'Sambhamurthy Nagar,Kalpana Jn,Tripurasundari Temple',
     stops: [busStops[0], busStops[2]],
     description: 'Route 65 through city areas'
   },
   {
     id: 'r79',
     routeNumber: '79',
-    name: 'Nookalamma Temple-Subbayya Hotel-Gandhipark-Ontimamidi Jn',
+    name: 'Nookalamma Temple,Subbayya Hotel,Gandhipark,Ontimamidi Jn',
     stops: [busStops[0], busStops[2]],
     description: 'Route 79 through city areas'
   },
   {
     id: 'r80',
     routeNumber: '80',
-    name: 'Ii Town-Apollo Hospital-Masid Center-Gold Market-Temple Street',
+    name: 'Ii Town,Apollo Hospital,Masid Center,Gold Market,Temple Street',
     stops: [busStops[0], busStops[2]],
     description: 'Route 80 through city areas'
   },
   {
     id: 'r78',
     routeNumber: '78',
-    name: 'Vadlamuru-Ragampeta-Samalkota-Peddapuram',
+    name: 'Vadlamuru,Ragampeta,Samalkota,Peddapuram',
     stops: [busStops[0], busStops[5], busStops[12]],
     description: 'Route 78 through multiple towns'
   },
@@ -411,34 +409,35 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r83',
     routeNumber: '83',
-    name: 'Morampudi-Sainagar-Ongc Highway (Rjy)',
+    name: 'Morampudi,Sainagar,Ongc Highway (Rjy)',
     stops: [busStops[0], busStops[3]],
     description: 'Route 83 to Rajahmundry through Morampudi'
   },
   {
     id: 'r84',
     routeNumber: '84',
-    name: 'Medapadu-Vetlapalem',
+    name: 'Medapadu,Vetlapalem',
     stops: [busStops[0], busStops[2]],
     description: 'Route 84 through coastal villages'
   },
   {
     id: 'r85',
     routeNumber: '85',
-    name: 'Gollaprolu-Rayavaram-Bhogapuram',
+    name: 'Gollaprolu,Rayavaram,Bhogapuram',
     stops: [busStops[0], busStops[7], busStops[14]],
     description: 'Route 85 through Gollaprolu and surrounding villages'
   },
   {
     id: 'r86',
     routeNumber: '86',
-    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    name: 'Msn Charties,Munasib Jn,Jk Pur Bridge',
     stops: [busStops[0], busStops[2]],
+    description: 'Route 86 through Kakinada city areas'
   },
   {
     id: 'r87',
     routeNumber: '87',
-    name: 'Gpt-Karanamgari Jn-Kamalveer',
+    name: 'Gpt,Karanamgari Jn,Kamalveer',
     stops: [busStops[0], busStops[2]],
     description: 'Route 87 through Kakinada city areas'
   },
@@ -452,14 +451,14 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r89',
     routeNumber: '89',
-    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    name: 'Msn Charties,Munasib Jn,Jk Pur Bridge',
     stops: [busStops[0], busStops[2]],
     description: 'Route 89 through Kakinada city areas'
   },
   {
     id: 'r90',
     routeNumber: '90',
-    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    name: 'Msn Charties,Munasib Jn,Jk Pur Bridge',
     stops: [busStops[0], busStops[2]],
     description: 'Route 90 through Kakinada city areas'
   },
@@ -473,7 +472,7 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r51',
     routeNumber: '51',
-    name: 'Chitrada-Pavara-Panduru Thimmapuram',
+    name: 'Chitrada,Pavara,Panduru Thimmapuram',
     stops: [busStops[0], busStops[2]],
     description: 'Route 51 through multiple villages'
   },
@@ -487,70 +486,70 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r50',
     routeNumber: '50',
-    name: 'Gpt-Karanamgari Jn-Kamalveer',
+    name: 'Gpt,Karanamgari Jn,Kamalveer',
     stops: [busStops[0], busStops[2]],
     description: 'Route 50 through Kakinada city areas'
   },
   {
     id: 'r1',
     routeNumber: '1',
-    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    name: 'Msn Charties,Munasib Jn,Jk Pur Bridge',
     stops: [busStops[0], busStops[2]],
     description: 'Route 1 through Kakinada city areas'
   },
   {
     id: 'r2',
     routeNumber: '2',
-    name: 'Ii Town-Apollo Hospital-Masid Center-Gold Market-Temple Street',
+    name: 'Ii Town,Apollo Hospital,Masid Center,Gold Market,Temple Street',
     stops: [busStops[0], busStops[2]],
     description: 'Route 2 through Kakinada city areas'
   },
   {
     id: 'r3',
     routeNumber: '3',
-    name: 'Sambhamurthy Nagar-Kalpana Jn',
+    name: 'Sambhamurthy Nagar,Kalpana Jn',
     stops: [busStops[0], busStops[2]],
     description: 'Route 3 through Kakinada city areas'
   },
   {
     id: 'r4',
     routeNumber: '4',
-    name: 'Nookalamma Temple-Subbayya Hotel-Gandhipark-Ontimamidi Jn',
+    name: 'Nookalamma Temple,Subbayya Hotel,Gandhipark,Ontimamidi Jn',
     stops: [busStops[0], busStops[2]],
     description: 'Route 4 through Kakinada city areas'
   },
   {
     id: 'r5',
     routeNumber: '5',
-    name: 'Gpt-Karanamgari Jn-Kamalveer',
+    name: 'Gpt,Karanamgari Jn,Kamalveer',
     stops: [busStops[0], busStops[2]],
     description: 'Route 5 through Kakinada city areas'
   },
   {
     id: 'r6',
     routeNumber: '6',
-    name: 'Dmart-Venkatnagar-Kokila-Sp Off-Ashram School Apsp',
+    name: 'Dmart,Venkatnagar,Kokila,Sp Off,Ashram School Apsp',
     stops: [busStops[0], busStops[2]],
     description: 'Route 6 through Kakinada city areas'
   },
   {
     id: 'r7',
     routeNumber: '7',
-    name: 'Rto Off Rd-Gangaraju Nagar.Ramanayyapeta Market-Rayudupalem',
+    name: 'Rto Off Rd,Gangaraju Nagar.Ramanayyapeta Market,Rayudupalem',
     stops: [busStops[0], busStops[2]],
     description: 'Route 7 through Kakinada city areas'
   },
   {
     id: 'r8',
     routeNumber: '8',
-    name: 'Dharmavaram-Prathipadu',
+    name: 'Dharmavaram,Prathipadu',
     stops: [busStops[0], busStops[2]],
     description: 'Route 8 towards Dharmavaram and Prathipadu'
   },
   {
     id: 'r9',
     routeNumber: '9',
-    name: 'Achampeta-Gonchala-Unduru',
+    name: 'Achampeta,Gonchala,Unduru',
     stops: [busStops[0], busStops[2]],
     description: 'Route 9 through multiple villages'
   },
@@ -564,7 +563,7 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r11',
     routeNumber: '11',
-    name: 'Hp Gas Company Rd-Gangaraju Nagar-Valasapakala',
+    name: 'Hp Gas Company Rd,Gangaraju Nagar,Valasapakala',
     stops: [busStops[0], busStops[2]],
     description: 'Route 11 through Kakinada city areas'
   },
@@ -585,14 +584,14 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r14',
     routeNumber: '14',
-    name: 'Kirlampudi-Rajupalem-Divili-Pulimeru',
+    name: 'Kirlampudi,Rajupalem,Divili,Pulimeru',
     stops: [busStops[0], busStops[2]],
     description: 'Route 14 through multiple villages'
   },
   {
     id: 'r15',
     routeNumber: '15',
-    name: 'Repur Center-Cheediga-Indrapalem Nerelamma Temple',
+    name: 'Repur Center,Cheediga,Indrapalem Nerelamma Temple',
     stops: [busStops[0], busStops[2]],
     description: 'Route 15 through Kakinada areas'
   },
@@ -606,125 +605,125 @@ export const busRoutes: BusRoute[] = [
   {
     id: 'r91',
     routeNumber: '91',
-    name: 'Chebrolu-Gollaprolu',
+    name: 'Chebrolu,Gollaprolu',
     stops: [busStops[0], busStops[7]],
     description: 'Route 91 serving Chebrolu and Gollaprolu'
   },
   {
     id: 'r18',
     routeNumber: '18',
-    name: 'Rto Off Rd-Gangaraju Nagar.Ramanayyapeta Market-Rayudupalem',
+    name: 'Rto Off Rd,Gangaraju Nagar.Ramanayyapeta Market,Rayudupalem',
     stops: [busStops[0], busStops[2]],
     description: 'Route 18 through Kakinada city areas'
   },
   {
     id: 'r38',
     routeNumber: '38',
-    name: 'Dowleswaram-Iltd-Railway Station-(Rjy)',
+    name: 'Dowleswaram,Iltd,Railway Station,(Rjy)',
     stops: [busStops[0], busStops[3]],
     description: 'Route 38 to Rajahmundry via Dowleswaram'
   },
   {
     id: 'r37',
     routeNumber: '37',
-    name: 'Torredu-Katheru',
+    name: 'Torredu,Katheru',
     stops: [busStops[0], busStops[3]],
     description: 'Route 37 to Rajahmundry areas'
   },
   {
     id: 'r45',
     routeNumber: '45',
-    name: 'Mallayyapeta-Anand Nagar-Quiry Rd-Subbarao Nagar-Rajanagaram Highway',
+    name: 'Mallayyapeta,Anand Nagar,Quiry Rd,Subbarao Nagar,Rajanagaram Highway',
     stops: [busStops[0], busStops[3]],
     description: 'Route 45 to Rajahmundry and surrounding areas'
   },
   {
     id: 'r39',
     routeNumber: '39',
-    name: 'Rajavolu-Bommuru',
+    name: 'Rajavolu,Bommuru',
     stops: [busStops[0], busStops[3]],
     description: 'Route 39 to Rajahmundry areas'
   },
   {
     id: 'r54',
     routeNumber: '54',
-    name: 'Tilak Rd-Jn Rd-Vadisaleru',
+    name: 'Tilak Rd,Jn Rd,Vadisaleru',
     stops: [busStops[0], busStops[3]],
     description: 'Route 54 through Rajahmundry areas'
   },
   {
     id: 'r40',
     routeNumber: '40',
-    name: 'Kotipalli Bus Stand-Stadium Rd-Bypass Rd Church',
+    name: 'Kotipalli Bus Stand,Stadium Rd, Bypass Rd Church.',
     stops: [busStops[0], busStops[3]],
     description: 'Route 40 through Rajahmundry areas'
   },
   {
     id: 'r41',
     routeNumber: '41',
-    name: 'Kadiyam-Vemagiri',
+    name: 'Kadiyam,Vemagiri',
     stops: [busStops[0], busStops[3]],
     description: 'Route 41 through Rajahmundry areas'
   },
   {
     id: 'r46',
     routeNumber: '46',
-    name: 'Danavaipeta-Shelton Hotel-Rtc Complex-Old Somalammatemple-Ava Rd',
+    name: 'Danavaipeta,Shelton Hotel,Rtc Complex,Old Somalammatemple,Ava Rd',
     stops: [busStops[0], busStops[3]],
     description: 'Route 46 through Rajahmundry areas'
   },
   {
     id: 'r30',
     routeNumber: '30',
-    name: 'Gokavaram Bus Stand-Godavari Gattu-Vijaya Talkies Rd Jagruthi Jn',
+    name: 'Gokavaram Bus Stand,Godavari Gattu,Vijaya Talkies Rd Jagruthi Jn',
     stops: [busStops[0], busStops[3]],
     description: 'Route 30 through Rajahmundry areas'
   },
   {
     id: 'r42',
     routeNumber: '42',
-    name: 'Kambala Cheruvu-Hitech Bus Stand-Arts College-Ctri-Lalacheruvu-Vadisaleru',
+    name: 'Kambala Cheruvu,Hitech Bus Stand,Arts College,Ctri,Lalacheruvu,Vadisaleru',
     stops: [busStops[0], busStops[3]],
     description: 'Route 42 through Rajahmundry areas'
   },
   {
     id: 'r53',
     routeNumber: '53',
-    name: 'Balajipeta-Savitrinagar-Hukkumpeta',
+    name: 'Balajipeta,Savitrinagar,Hukkumpeta',
     stops: [busStops[0], busStops[3]],
     description: 'Route 53 through Rajahmundry areas'
   },
   {
     id: 'r49',
     routeNumber: '49',
-    name: 'Aryapuram-App Mill-Brothern Church-Chiramjivi Bus Stand',
+    name: 'Aryapuram,App Mill,Brothern Church,Chiramjivi Bus Stand',
     stops: [busStops[0], busStops[2]],
     description: 'Route 49 through Kakinada areas'
   },
   {
     id: 'r82',
     routeNumber: '82',
-    name: 'Hb Colony-Rajanagaram',
+    name: 'Hb Colony,Rajanagaram',
     stops: [busStops[0], busStops[3]],
     description: 'Route 82 to Rajahmundry areas'
   },
   {
     id: 'r22',
     routeNumber: '22',
-    name: 'Anaparthy-Balabadrapuram-Nallamilli',
+    name: 'Anaparthy,Balabadrapuram,Nallamilli',
     stops: [busStops[0], busStops[10]],
     description: 'Route 22 serving Anaparthy and surrounding areas'
   },
   {
     id: 'r25',
     routeNumber: '25',
-    name: 'Nandamganiraju Jn-Konthamuru Rd-Konthamuru',
+    name: 'Nandamganiraju Jn,Korukonda Rd,Konthamuru.',
     stops: [busStops[0], busStops[3]],
     description: 'Route 25 through Rajahmundry areas'
   }
 ];
 
-// Generate bus data based on the table data provided
+// Parse provided table data to create bus list
 export const allBuses: Bus[] = [
   {
     id: 'b1',
@@ -754,7 +753,6 @@ export const allBuses: Bus[] = [
     estimatedArrival: '15 min',
     lastUpdated: new Date()
   },
-  // Continue with more buses up to 81
   {
     id: 'b3',
     vehicleNumber: 'AP05TA0996',
@@ -806,7 +804,7 @@ export const allBuses: Bus[] = [
     years: ['II', 'III', 'IV'],
     currentLocation: getLocationWithOffset(locations.mandapeta, 0.4),
     currentSpeed: Math.floor(Math.random() * 40) + 10,
-    status: 'delayed',
+    status: 'running',
     capacity: 46,
     estimatedArrival: '35 min',
     lastUpdated: new Date()
@@ -866,80 +864,205 @@ export const allBuses: Bus[] = [
     capacity: 50,
     estimatedArrival: '22 min',
     lastUpdated: new Date()
+  },
+  {
+    id: 'b11',
+    vehicleNumber: 'AP05TD3361',
+    busNumber: '56',
+    routeId: 'r56',
+    driverId: 'd11',
+    years: ['I', 'II', 'III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.rayavaram, 0.4),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '22 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b12',
+    vehicleNumber: 'AP05TD3362',
+    busNumber: '57',
+    routeId: 'r57',
+    driverId: 'd12',
+    years: ['III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.pithapuram, 0.4),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '22 min',
+    lastUpdated: new Date()
   }
 ];
 
-// Generate the remaining 71 buses with data from the table
-for (let i = 11; i <= 81; i++) {
-  const routeNumber = i <= 10 
-    ? String(i) 
-    : i >= 11 && i <= 20 
-      ? String(i + 10) 
-      : String(i);
-      
-  const routeId = `r${routeNumber}`;
-  const driverId = `d${i}`;
-  
-  // Get random location based on route
-  const route = busRoutes.find(r => r.id === routeId) || busRoutes[0];
-  const baseLocation = route.stops.length > 1 
-    ? route.stops[1].location 
-    : locations.pragatiEngCollege;
-  
-  // Determine capacity (distribution according to data)
-  let capacity: number;
-  if (i % 3 === 0) {
-    capacity = 40;
-  } else if (i % 3 === 1) {
-    capacity = 46;
-  } else {
-    capacity = 50;
+// Continue adding the rest of the buses from the data table
+for (let i = 13; i <= 81; i++) {
+  const busData = [
+    // Bus 13
+    { vehicleNumber: 'AP05TD3363', busNumber: '58', routeId: 'r58', driverId: 'd13', years: ['II', 'III', 'IV'] },
+    // Bus 14
+    { vehicleNumber: 'AP05TD3364', busNumber: '59', routeId: 'r59', driverId: 'd14', years: ['III', 'IV'] },
+    // Bus 15
+    { vehicleNumber: 'AP05TD3365', busNumber: '60', routeId: 'r60', driverId: 'd15', years: ['III', 'IV'] },
+    // Bus 16
+    { vehicleNumber: 'AP05TD3368', busNumber: '61', routeId: 'r61', driverId: 'd16', years: ['III'] },
+    // Bus 17
+    { vehicleNumber: 'AP05TD3370', busNumber: '62', routeId: 'r62', driverId: 'd17', years: ['III', 'IV'] },
+    // Bus 18
+    { vehicleNumber: 'AP05TD3371', busNumber: '63', routeId: 'r63', driverId: 'd18', years: ['II'] },
+    // Bus 19
+    { vehicleNumber: 'AP05TD3372', busNumber: '64', routeId: 'r64', driverId: 'd19', years: ['II'] },
+    // Bus 20
+    { vehicleNumber: 'AP39UX7422', busNumber: '20', routeId: 'r20', driverId: 'd20', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 21
+    { vehicleNumber: 'AP05TD7851', busNumber: '67', routeId: 'r67', driverId: 'd21', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 22
+    { vehicleNumber: 'AP05TD7852', busNumber: '68', routeId: 'r68', driverId: 'd22', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 23
+    { vehicleNumber: 'AP05TD7853', busNumber: '69', routeId: 'r69', driverId: 'd23', years: ['I'] },
+    // Bus 24
+    { vehicleNumber: 'AP39UQ6298', busNumber: '12', routeId: 'r12', driverId: 'd24', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 25
+    { vehicleNumber: 'AP05TD7855', busNumber: '71', routeId: 'r71', driverId: 'd25', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 26
+    { vehicleNumber: 'AP05TD7856', busNumber: '72', routeId: 'r72', driverId: 'd26', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 27
+    { vehicleNumber: 'AP05TD7858', busNumber: '73', routeId: 'r73', driverId: 'd27', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 28
+    { vehicleNumber: 'AP05TD7859', busNumber: '74', routeId: 'r74', driverId: 'd28', years: ['STAFF'] },
+    // Bus 29
+    { vehicleNumber: 'AP05TD7860', busNumber: '75', routeId: 'r75', driverId: 'd29', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 30
+    { vehicleNumber: 'AP05TG2719', busNumber: '76', routeId: 'r76', driverId: 'd30', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 31
+    { vehicleNumber: 'AP05TG2720', busNumber: '77', routeId: 'r77', driverId: 'd31', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 32
+    { vehicleNumber: 'AP05TD3373', busNumber: '65', routeId: 'r65', driverId: 'd32', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 33
+    { vehicleNumber: 'AP05TG2722', busNumber: '79', routeId: 'r79', driverId: 'd33', years: ['II'] },
+    // Bus 34
+    { vehicleNumber: 'AP05TG2723', busNumber: '80', routeId: 'r80', driverId: 'd34', years: ['II'] },
+    // Bus 35
+    { vehicleNumber: 'AP05TG2721', busNumber: '78', routeId: 'r78', driverId: 'd35', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 36
+    { vehicleNumber: 'AP05TG2740', busNumber: '81', routeId: 'r81', driverId: 'd36', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 37
+    { vehicleNumber: 'AP05TG2784', busNumber: '83', routeId: 'r83', driverId: 'd37', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 38
+    { vehicleNumber: 'AP05TG2785', busNumber: '84', routeId: 'r84', driverId: 'd38', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 39
+    { vehicleNumber: 'AP05TM0794', busNumber: '85', routeId: 'r85', driverId: 'd39', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 40
+    { vehicleNumber: 'AP05TM0795', busNumber: '86', routeId: 'r86', driverId: 'd40', years: ['II', 'III', 'IV'] },
+    // Bus 41
+    { vehicleNumber: 'AP05TM0796', busNumber: '87', routeId: 'r87', driverId: 'd41', years: ['II', 'III', 'IV'] },
+    // Bus 42
+    { vehicleNumber: 'AP05TM0797', busNumber: '88', routeId: 'r88', driverId: 'd42', years: ['II'] },
+    // Bus 43
+    { vehicleNumber: 'AP05TM0798', busNumber: '89', routeId: 'r89', driverId: 'd43', years: ['III'] },
+    // Bus 44
+    { vehicleNumber: 'AP05TM2078', busNumber: '90', routeId: 'r90', driverId: 'd44', years: ['IV'] },
+    // Bus 45
+    { vehicleNumber: 'AP39UQ6305', busNumber: '17', routeId: 'r17', driverId: 'd45', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 46
+    { vehicleNumber: 'AP05TC8940', busNumber: '51', routeId: 'r51', driverId: 'd46', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 47
+    { vehicleNumber: 'AP05TC8942', busNumber: '52', routeId: 'r52', driverId: 'd47', years: ['III'] },
+    // Bus 48
+    { vehicleNumber: 'AP05TC8974', busNumber: '50', routeId: 'r50', driverId: 'd48', years: ['II', 'III', 'IV'] },
+    // Bus 49
+    { vehicleNumber: 'AP39UQ4907', busNumber: '1', routeId: 'r1', driverId: 'd49', years: ['I'] },
+    // Bus 50
+    { vehicleNumber: 'AP39UQ4908', busNumber: '2', routeId: 'r2', driverId: 'd50', years: ['I'] },
+    // Bus 51
+    { vehicleNumber: 'AP39UQ4909', busNumber: '3', routeId: 'r3', driverId: 'd51', years: ['I'] },
+    // Bus 52
+    { vehicleNumber: 'AP39UQ4910', busNumber: '4', routeId: 'r4', driverId: 'd52', years: ['I'] },
+    // Bus 53
+    { vehicleNumber: 'AP39UQ4911', busNumber: '5', routeId: 'r5', driverId: 'd53', years: ['I'] },
+    // Bus 54
+    { vehicleNumber: 'AP39UQ4912', busNumber: '6', routeId: 'r6', driverId: 'd54', years: ['I'] },
+    // Bus 55
+    { vehicleNumber: 'AP39UQ6293', busNumber: '7', routeId: 'r7', driverId: 'd55', years: ['I'] },
+    // Bus 56
+    { vehicleNumber: 'AP39UQ6294', busNumber: '8', routeId: 'r8', driverId: 'd56', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 57
+    { vehicleNumber: 'AP39UQ6295', busNumber: '9', routeId: 'r9', driverId: 'd57', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 58
+    { vehicleNumber: 'AP39UQ6296', busNumber: '10', routeId: 'r10', driverId: 'd58', years: ['I'] },
+    // Bus 59
+    { vehicleNumber: 'AP39UQ6297', busNumber: '11', routeId: 'r11', driverId: 'd59', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 60
+    { vehicleNumber: 'AP39UX7420', busNumber: '19', routeId: 'r19', driverId: 'd60', years: ['STAFF'] },
+    // Bus 61
+    { vehicleNumber: 'AP39UQ6301', busNumber: '13', routeId: 'r13', driverId: 'd61', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 62
+    { vehicleNumber: 'AP39UQ6302', busNumber: '14', routeId: 'r14', driverId: 'd62', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 63
+    { vehicleNumber: 'AP39UQ6303', busNumber: '15', routeId: 'r15', driverId: 'd63', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 64
+    { vehicleNumber: 'AP39UQ6304', busNumber: '16', routeId: 'r16', driverId: 'd64', years: ['I'] },
+    // Bus 65
+    { vehicleNumber: 'AP05TM2080', busNumber: '91', routeId: 'r91', driverId: 'd65', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 66
+    { vehicleNumber: 'AP39UQ6306', busNumber: '18', routeId: 'r18', driverId: 'd66', years: ['III', 'IV'] },
+    // Bus 67
+    { vehicleNumber: 'AP05TC4085', busNumber: '38', routeId: 'r38', driverId: 'd67', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 68
+    { vehicleNumber: 'AP05TC4086', busNumber: '37', routeId: 'r37', driverId: 'd68', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 69
+    { vehicleNumber: 'AP05TC4087', busNumber: '45', routeId: 'r45', driverId: 'd69', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 70
+    { vehicleNumber: 'AP05TC4088', busNumber: '39', routeId: 'r39', driverId: 'd70', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 71
+    { vehicleNumber: 'AP05TC4089', busNumber: '54', routeId: 'r54', driverId: 'd71', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 72
+    { vehicleNumber: 'AP05TC4090', busNumber: '40', routeId: 'r40', driverId: 'd72', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 73
+    { vehicleNumber: 'AP05TC4091', busNumber: '41', routeId: 'r41', driverId: 'd73', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 74
+    { vehicleNumber: 'AP05TC4092', busNumber: '46', routeId: 'r46', driverId: 'd74', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 75
+    { vehicleNumber: 'AP05TC4093', busNumber: '30', routeId: 'r30', driverId: 'd75', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 76
+    { vehicleNumber: 'AP05TC8941', busNumber: '42', routeId: 'r42', driverId: 'd76', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 77
+    { vehicleNumber: 'AP05TC8972', busNumber: '53', routeId: 'r53', driverId: 'd77', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 78
+    { vehicleNumber: 'AP05TC9048', busNumber: '49', routeId: 'r49', driverId: 'd78', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 79
+    { vehicleNumber: 'AP05TG2741', busNumber: '82', routeId: 'r82', driverId: 'd79', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 80
+    { vehicleNumber: 'AP05TA0995', busNumber: '22', routeId: 'r22', driverId: 'd80', years: ['I', 'II', 'III', 'IV'] },
+    // Bus 81
+    { vehicleNumber: 'AP05TA9773', busNumber: '25', routeId: 'r25', driverId: 'd81', years: ['I', 'II', 'III', 'IV'] },
+  ][i - 13];
+
+  if (busData) {
+    const routeId = busData.routeId;
+    const route = busRoutes.find(r => r.id === routeId);
+    const baseLocation = route && route.stops.length > 1 
+      ? route.stops[1].location 
+      : locations.pragatiEngCollege;
+
+    allBuses.push({
+      id: `b${i}`,
+      vehicleNumber: busData.vehicleNumber,
+      busNumber: busData.busNumber,
+      routeId: busData.routeId,
+      driverId: busData.driverId,
+      years: busData.years as YearGroup[],
+      currentLocation: getLocationWithOffset(baseLocation, 0.5 + Math.random()),
+      currentSpeed: Math.floor(Math.random() * 40) + 10,
+      status: Math.random() > 0.8 ? (Math.random() > 0.5 ? 'delayed' : 'stopped') : 'running',
+      capacity: [40, 46, 50][Math.floor(Math.random() * 3)],
+      estimatedArrival: `${Math.floor(5 + Math.random() * 40)} min`,
+      lastUpdated: new Date()
+    });
   }
-  
-  // Generate random status with probability
-  const statusRandom = Math.random();
-  let status: 'running' | 'delayed' | 'stopped';
-  if (statusRandom < 0.7) {
-    status = 'running';
-  } else if (statusRandom < 0.9) {
-    status = 'delayed';
-  } else {
-    status = 'stopped';
-  }
-  
-  // Parse years from the table data for each bus
-  let years: YearGroup[] = [];
-  
-  // This is a simplified assignment - in a real app, you'd parse the actual data
-  if (i % 5 === 0) {
-    years = ['STAFF'];
-  } else if (i % 5 === 1) {
-    years = ['I', 'II', 'III', 'IV'];
-  } else if (i % 5 === 2) {
-    years = ['I', 'II'];
-  } else if (i % 5 === 3) {
-    years = ['III', 'IV'];
-  } else {
-    years = ['I', 'III'];
-  }
-  
-  allBuses.push({
-    id: `b${i}`,
-    vehicleNumber: `AP05T${String.fromCharCode(65 + Math.floor(i/10))}${Math.floor(1000 + i * 13 % 9000)}`,
-    busNumber: routeNumber,
-    routeId,
-    driverId,
-    years,
-    currentLocation: getLocationWithOffset(baseLocation, 0.5 + Math.random()),
-    currentSpeed: Math.floor(Math.random() * 40) + 10,
-    status,
-    capacity,
-    estimatedArrival: `${Math.floor(5 + Math.random() * 40)} min`,
-    lastUpdated: new Date()
-  });
 }
 
-// New function to get bus details by ID
+// Get bus details by ID
 export const getBusDetails = (busId: string) => {
   const bus = allBuses.find(b => b.id === busId);
   if (!bus) return null;
@@ -954,12 +1077,12 @@ export const getBusDetails = (busId: string) => {
   };
 };
 
-// New function to get route details by ID
+// Get route details by ID
 export const getRouteDetails = (routeId: string) => {
   return busRoutes.find(r => r.id === routeId) || null;
 };
 
-// New function to filter buses based only on route number
+// Filter buses by route number
 export const filterBuses = (query: string): Bus[] => {
   if (!query || query.trim() === '') {
     return [];
