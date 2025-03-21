@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
@@ -12,7 +11,7 @@ import { Bus as BusIcon, Calendar, Users } from 'lucide-react';
 
 const Index = () => {
   const [allBuses, setAllBuses] = useState<Bus[]>(buses);
-  const [filteredBuses, setFilteredBuses] = useState<Bus[]>(buses.slice(0, 20)); // Show first 20 buses
+  const [filteredBuses, setFilteredBuses] = useState<Bus[]>(buses.slice(0, 50)); // Show first 50 buses
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
   const [showBusDetails, setShowBusDetails] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
@@ -75,14 +74,14 @@ const Index = () => {
   // Update filtered buses when search is not active
   useEffect(() => {
     if (!searchActive) {
-      setFilteredBuses(allBuses.slice(0, 20)); // Show first 20 buses when not searching
+      setFilteredBuses(allBuses.slice(0, 50)); // Show first 50 buses when not searching
     }
   }, [allBuses, searchActive]);
   
   const handleSearchResults = (results: Bus[]) => {
     if (results.length === 0 && !searchActive) {
-      // If no search results and search is not active, show first 20 buses
-      setFilteredBuses(allBuses.slice(0, 20));
+      // If no search results and search is not active, show first 50 buses
+      setFilteredBuses(allBuses.slice(0, 50));
     } else {
       setFilteredBuses(results);
       setSearchActive(results.length > 0);
@@ -123,7 +122,7 @@ const Index = () => {
           Pragati Engineering College Bus Tracker
         </h1>
         <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
-          Buses Routes for the AY 2024-25
+          Buses Routes for the AY 2024-25 • {allBuses.length} total buses
         </p>
         
         {/* Stats cards before the map */}

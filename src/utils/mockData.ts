@@ -434,3 +434,507 @@ export const busRoutes: BusRoute[] = [
     routeNumber: '86',
     name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
     stops: [busStops[0], busStops[2]],
+  },
+  {
+    id: 'r87',
+    routeNumber: '87',
+    name: 'Gpt-Karanamgari Jn-Kamalveer',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 87 through Kakinada city areas'
+  },
+  {
+    id: 'r88',
+    routeNumber: '88',
+    name: 'Pithapuram Only',
+    stops: [busStops[0], busStops[6]],
+    description: 'Route 88 serving Pithapuram'
+  },
+  {
+    id: 'r89',
+    routeNumber: '89',
+    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 89 through Kakinada city areas'
+  },
+  {
+    id: 'r90',
+    routeNumber: '90',
+    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 90 through Kakinada city areas'
+  },
+  {
+    id: 'r17',
+    routeNumber: '17',
+    name: 'Annavaram Kathipudi Durgada Jn',
+    stops: [busStops[0], busStops[8], busStops[4]],
+    description: 'Route 17 via Annavaram and Kathipudi'
+  },
+  {
+    id: 'r51',
+    routeNumber: '51',
+    name: 'Chitrada-Pavara-Panduru Thimmapuram',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 51 through multiple villages'
+  },
+  {
+    id: 'r52',
+    routeNumber: '52',
+    name: 'Ramachandrapuram Only',
+    stops: [busStops[0], busStops[25]],
+    description: 'Route 52 serving Ramachandrapuram'
+  },
+  {
+    id: 'r50',
+    routeNumber: '50',
+    name: 'Gpt-Karanamgari Jn-Kamalveer',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 50 through Kakinada city areas'
+  },
+  {
+    id: 'r1',
+    routeNumber: '1',
+    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 1 through Kakinada city areas'
+  },
+  {
+    id: 'r2',
+    routeNumber: '2',
+    name: 'Ii Town-Apollo Hospital-Masid Center-Gold Market-Temple Street',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 2 through Kakinada city areas'
+  },
+  {
+    id: 'r3',
+    routeNumber: '3',
+    name: 'Sambhamurthy Nagar-Kalpana Jn',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 3 through Kakinada city areas'
+  },
+  {
+    id: 'r4',
+    routeNumber: '4',
+    name: 'Nookalamma Temple-Subbayya Hotel-Gandhipark-Ontimamidi Jn',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 4 through Kakinada city areas'
+  },
+  {
+    id: 'r5',
+    routeNumber: '5',
+    name: 'Gpt-Karanamgari Jn-Kamalveer',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 5 through Kakinada city areas'
+  },
+  {
+    id: 'r6',
+    routeNumber: '6',
+    name: 'Dmart-Venkatnagar-Kokila-Sp Off-Ashram School Apsp',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 6 through Kakinada city areas'
+  },
+  {
+    id: 'r7',
+    routeNumber: '7',
+    name: 'Rto Off Rd-Gangaraju Nagar.Ramanayyapeta Market-Rayudupalem',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 7 through Kakinada city areas'
+  },
+  {
+    id: 'r8',
+    routeNumber: '8',
+    name: 'Dharmavaram-Prathipadu',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 8 towards Dharmavaram and Prathipadu'
+  },
+  {
+    id: 'r9',
+    routeNumber: '9',
+    name: 'Achampeta-Gonchala-Unduru',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 9 through multiple villages'
+  },
+  {
+    id: 'r10',
+    routeNumber: '10',
+    name: 'Pithapuram Fk Palem Jalluru',
+    stops: [busStops[0], busStops[6]],
+    description: 'Route 10 serving Pithapuram and surrounding areas'
+  },
+  {
+    id: 'r11',
+    routeNumber: '11',
+    name: 'Hp Gas Company Rd-Gangaraju Nagar-Valasapakala',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 11 through Kakinada city areas'
+  },
+  {
+    id: 'r19',
+    routeNumber: '19',
+    name: 'Staff Kkd',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 19 for staff from Kakinada'
+  },
+  {
+    id: 'r13',
+    routeNumber: '13',
+    name: 'Peddapuram Only',
+    stops: [busStops[0], busStops[13]],
+    description: 'Route 13 serving Peddapuram'
+  },
+  {
+    id: 'r14',
+    routeNumber: '14',
+    name: 'Kirlampudi-Rajupalem-Divili-Pulimeru',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 14 through multiple villages'
+  },
+  {
+    id: 'r15',
+    routeNumber: '15',
+    name: 'Repur Center-Cheediga-Indrapalem Nerelamma Temple',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 15 through Kakinada areas'
+  },
+  {
+    id: 'r16',
+    routeNumber: '16',
+    name: 'Gaigolupadu Jewelmedows Sarpavaram Villege',
+    stops: [busStops[0], busStops[7]],
+    description: 'Route 16 through Gaigolupadu and Sarpavaram'
+  },
+  {
+    id: 'r91',
+    routeNumber: '91',
+    name: 'Chebrolu-Gollaprolu',
+    stops: [busStops[0], busStops[7]],
+    description: 'Route 91 serving Chebrolu and Gollaprolu'
+  },
+  {
+    id: 'r18',
+    routeNumber: '18',
+    name: 'Rto Off Rd-Gangaraju Nagar.Ramanayyapeta Market-Rayudupalem',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 18 through Kakinada city areas'
+  },
+  {
+    id: 'r38',
+    routeNumber: '38',
+    name: 'Dowleswaram-Iltd-Railway Station-(Rjy)',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 38 to Rajahmundry via Dowleswaram'
+  },
+  {
+    id: 'r37',
+    routeNumber: '37',
+    name: 'Torredu-Katheru',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 37 to Rajahmundry areas'
+  },
+  {
+    id: 'r45',
+    routeNumber: '45',
+    name: 'Mallayyapeta-Anand Nagar-Quiry Rd-Subbarao Nagar-Rajanagaram Highway',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 45 to Rajahmundry and surrounding areas'
+  },
+  {
+    id: 'r39',
+    routeNumber: '39',
+    name: 'Rajavolu-Bommuru',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 39 to Rajahmundry areas'
+  },
+  {
+    id: 'r54',
+    routeNumber: '54',
+    name: 'Tilak Rd-Jn Rd-Vadisaleru',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 54 through Rajahmundry areas'
+  },
+  {
+    id: 'r40',
+    routeNumber: '40',
+    name: 'Kotipalli Bus Stand-Stadium Rd-Bypass Rd Church',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 40 through Rajahmundry areas'
+  },
+  {
+    id: 'r41',
+    routeNumber: '41',
+    name: 'Kadiyam-Vemagiri',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 41 through Rajahmundry areas'
+  },
+  {
+    id: 'r46',
+    routeNumber: '46',
+    name: 'Danavaipeta-Shelton Hotel-Rtc Complex-Old Somalammatemple-Ava Rd',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 46 through Rajahmundry areas'
+  },
+  {
+    id: 'r30',
+    routeNumber: '30',
+    name: 'Gokavaram Bus Stand-Godavari Gattu-Vijaya Talkies Rd Jagruthi Jn',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 30 through Rajahmundry areas'
+  },
+  {
+    id: 'r42',
+    routeNumber: '42',
+    name: 'Kambala Cheruvu-Hitech Bus Stand-Arts College-Ctri-Lalacheruvu-Vadisaleru',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 42 through Rajahmundry areas'
+  },
+  {
+    id: 'r53',
+    routeNumber: '53',
+    name: 'Balajipeta-Savitrinagar-Hukkumpeta',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 53 through Rajahmundry areas'
+  },
+  {
+    id: 'r49',
+    routeNumber: '49',
+    name: 'Aryapuram-App Mill-Brothern Church-Chiramjivi Bus Stand',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 49 through Kakinada areas'
+  },
+  {
+    id: 'r82',
+    routeNumber: '82',
+    name: 'Hb Colony-Rajanagaram',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 82 to Rajahmundry areas'
+  },
+  {
+    id: 'r22',
+    routeNumber: '22',
+    name: 'Anaparthy-Balabadrapuram-Nallamilli',
+    stops: [busStops[0], busStops[10]],
+    description: 'Route 22 serving Anaparthy and surrounding areas'
+  },
+  {
+    id: 'r25',
+    routeNumber: '25',
+    name: 'Nandamganiraju Jn-Korukonda Rd-Konthamuru',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 25 through Rajahmundry areas'
+  }
+];
+
+// Generate bus data based on the table data provided
+export const allBuses: Bus[] = [
+  {
+    id: 'b1',
+    vehicleNumber: 'AP05TA0994',
+    busNumber: '21',
+    routeId: 'r21',
+    driverId: 'd1',
+    years: ['I', 'II', 'III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.pragatiEngCollege, 0.8),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '5 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b2',
+    vehicleNumber: 'AP05TD7854',
+    busNumber: '70',
+    routeId: 'r70',
+    driverId: 'd2',
+    years: ['II', 'III'],
+    currentLocation: getLocationWithOffset(locations.draksharamam, 0.6),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 46,
+    estimatedArrival: '15 min',
+    lastUpdated: new Date()
+  },
+  // Continue with more buses up to 81
+  {
+    id: 'b3',
+    vehicleNumber: 'AP05TA0996',
+    busNumber: '23',
+    routeId: 'r23',
+    driverId: 'd3',
+    years: ['I'],
+    currentLocation: getLocationWithOffset(locations.mandapeta, 0.7),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '20 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b4',
+    vehicleNumber: 'AP05TA0998',
+    busNumber: '24',
+    routeId: 'r24',
+    driverId: 'd4',
+    years: ['II', 'III'],
+    currentLocation: getLocationWithOffset(locations.mandapeta, 0.5),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '25 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b5',
+    vehicleNumber: 'AP05TA5278',
+    busNumber: '36',
+    routeId: 'r36',
+    driverId: 'd5',
+    years: ['II'],
+    currentLocation: getLocationWithOffset(locations.biccavolu, 0.6),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 46,
+    estimatedArrival: '30 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b6',
+    vehicleNumber: 'AP05TA5279',
+    busNumber: '35',
+    routeId: 'r35',
+    driverId: 'd6',
+    years: ['II', 'III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.mandapeta, 0.4),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'delayed',
+    capacity: 46,
+    estimatedArrival: '35 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b7',
+    vehicleNumber: 'AP05TA5280',
+    busNumber: '31',
+    routeId: 'r31',
+    driverId: 'd7',
+    years: ['III'],
+    currentLocation: getLocationWithOffset(locations.mandapeta, 0.3),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 46,
+    estimatedArrival: '20 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b8',
+    vehicleNumber: 'AP05TA5367',
+    busNumber: '32',
+    routeId: 'r32',
+    driverId: 'd8',
+    years: ['I', 'II', 'III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.surampalem, 0.5),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '10 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b9',
+    vehicleNumber: 'AP05TA5368',
+    busNumber: '34',
+    routeId: 'r34',
+    driverId: 'd9',
+    years: ['I', 'II', 'III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.pedapudi, 0.6),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '15 min',
+    lastUpdated: new Date()
+  },
+  {
+    id: 'b10',
+    vehicleNumber: 'AP05TA5370',
+    busNumber: '33',
+    routeId: 'r33',
+    driverId: 'd10',
+    years: ['II', 'III', 'IV'],
+    currentLocation: getLocationWithOffset(locations.rayavaram, 0.4),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status: 'running',
+    capacity: 50,
+    estimatedArrival: '22 min',
+    lastUpdated: new Date()
+  }
+];
+
+// Generate the remaining 71 buses with data from the table
+for (let i = 11; i <= 81; i++) {
+  const routeNumber = i <= 10 
+    ? String(i) 
+    : i >= 11 && i <= 20 
+      ? String(i + 10) 
+      : String(i);
+      
+  const routeId = `r${routeNumber}`;
+  const driverId = `d${i}`;
+  
+  // Get random location based on route
+  const route = busRoutes.find(r => r.id === routeId) || busRoutes[0];
+  const baseLocation = route.stops.length > 1 
+    ? route.stops[1].location 
+    : locations.pragatiEngCollege;
+  
+  // Determine capacity (distribution according to data)
+  let capacity: number;
+  if (i % 3 === 0) {
+    capacity = 40;
+  } else if (i % 3 === 1) {
+    capacity = 46;
+  } else {
+    capacity = 50;
+  }
+  
+  // Generate random status with probability
+  const statusRandom = Math.random();
+  let status: 'running' | 'delayed' | 'stopped';
+  if (statusRandom < 0.7) {
+    status = 'running';
+  } else if (statusRandom < 0.9) {
+    status = 'delayed';
+  } else {
+    status = 'stopped';
+  }
+  
+  // Parse years from the table data for each bus
+  let years: YearGroup[] = [];
+  
+  // This is a simplified assignment - in a real app, you'd parse the actual data
+  if (i % 5 === 0) {
+    years = ['STAFF'];
+  } else if (i % 5 === 1) {
+    years = ['I', 'II', 'III', 'IV'];
+  } else if (i % 5 === 2) {
+    years = ['I', 'II'];
+  } else if (i % 5 === 3) {
+    years = ['III', 'IV'];
+  } else {
+    years = ['I', 'III'];
+  }
+  
+  allBuses.push({
+    id: `b${i}`,
+    vehicleNumber: `AP05T${String.fromCharCode(65 + Math.floor(i/10))}${Math.floor(1000 + i * 13 % 9000)}`,
+    busNumber: routeNumber,
+    routeId,
+    driverId,
+    years,
+    currentLocation: getLocationWithOffset(baseLocation, 0.5 + Math.random()),
+    currentSpeed: Math.floor(Math.random() * 40) + 10,
+    status,
+    capacity,
+    estimatedArrival: `${Math.floor(5 + Math.random() * 40)} min`,
+    lastUpdated: new Date()
+  });
+}
