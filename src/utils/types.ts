@@ -12,9 +12,11 @@ export interface BusStop {
 }
 
 export type BusStatus = 'running' | 'delayed' | 'stopped' | 'completed';
+export type YearGroup = 'I' | 'II' | 'III' | 'IV' | 'STAFF';
 
 export interface BusRoute {
   id: string;
+  routeNumber: string;
   name: string;
   stops: BusStop[];
   description?: string;
@@ -23,15 +25,17 @@ export interface BusRoute {
 export interface Driver {
   id: string;
   name: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   photo?: string;
 }
 
 export interface Bus {
   id: string;
+  vehicleNumber: string;
   busNumber: string;
   routeId: string;
   driverId: string;
+  years: YearGroup[];
   currentLocation: Location;
   currentSpeed: number; // in km/h
   status: BusStatus;
@@ -45,4 +49,5 @@ export interface SearchFilters {
   routeName?: string;
   driverName?: string;
   status?: BusStatus;
+  year?: YearGroup;
 }

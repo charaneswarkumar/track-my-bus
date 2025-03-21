@@ -87,6 +87,10 @@
   animation: pulseBlueBorder 2s infinite;
 }
 
+.backdrop-blur-xs {
+  backdrop-filter: blur(2px);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -145,4 +149,23 @@
 .bus-stop-marker {
   position: relative;
   z-index: 1;
+}
+
+/* Map specific styles */
+.map-zoom-controls {
+  @apply fixed bottom-4 right-4 flex flex-col gap-2 z-30;
+}
+
+.control-btn {
+  @apply w-8 h-8 rounded-full flex items-center justify-center bg-white dark:bg-neutral-700 shadow-md 
+  hover:bg-neutral-100 dark:hover:bg-neutral-600 transition-colors;
+}
+
+/* Fullscreen map */
+.map-fullscreen {
+  @apply fixed inset-0 z-50 rounded-none;
+}
+
+.fullscreen-controls {
+  @apply absolute top-4 right-4 flex space-x-2;
 }

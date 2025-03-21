@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { Navigation } from 'lucide-react';
-import { buses as mockBuses, busRoutes, busStops } from '../utils/mockData';
-import { Bus } from '../utils/types';
+import { Navigation, Maximize, Minimize, MapPin, Bus as BusIcon } from 'lucide-react';
+import { busRoutes, busStops } from '../utils/mockData';
+import { Bus, BusRoute } from '../utils/types';
 
 interface MapProps {
   selectedBus: Bus | null;
@@ -10,20 +10,21 @@ interface MapProps {
   buses?: Bus[];
 }
 
-const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }) => {
+const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = [] }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const mapRef = useRef<HTMLDivElement>(null);
   const dragStartRef = useRef({ x: 0, y: 0 });
   const positionRef = useRef({ x: 0, y: 0 });
+  const [fullscreen, setFullscreen] = useState(false);
 
   // Map bounds (latitude and longitude ranges)
   const mapBounds = {
     minLat: 16.9307, // South bound
-    maxLat: 17.1307, // North bound
-    minLng: 82.1504, // West bound
-    maxLng: 82.3504, // East bound
+    maxLat: 17.3607, // North bound - Extended to show more locations
+    minLng: 81.7504, // West bound - Extended to include Rajahmundry
+    maxLng: 82.5504, // East bound - Extended to include Tuni
   };
 
   // Center of the map (Pragati Engineering College)
@@ -122,6 +123,14 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }
     onBusSelect(bus);
   };
 
+  // Toggle fullscreen map
+  const toggleFullscreen = () => {
+    setFullscreen(!fullscreen);
+    // Reset position and zoom when toggling fullscreen
+    setPosition({ x: 0, y: 0 });
+    setZoom(1);
+  };
+
   // Clean up event listeners
   useEffect(() => {
     const handleMouseUpGlobal = () => {
@@ -135,7 +144,17 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }
   }, []);
 
   return (
-    <div className="map-container relative bg-blue-50 dark:bg-neutral-800 overflow-hidden">
+    <div className={`map-container relative bg-blue-50/80 dark:bg-neutral-800/80 overflow-hidden transition-all duration-300 ${
+      fullscreen ? 'fixed inset-0 z-50 rounded-none' : ''
+    }`}>
+      {/* Map heading with fullscreen toggle */}
+      <div className="absolute top-2 left-2 z-20 flex items-center">
+        <div className="bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm shadow-sm rounded-lg py-1 px-3 flex items-center space-x-2">
+          <MapPin className="h-4 w-4 text-blue-500" />
+          <h3 className="text-sm font-medium">Pragati Engineering College Bus Routes</h3>
+        </div>
+      </div>
+
       <div
         ref={mapRef}
         className="absolute inset-0 cursor-grab"
@@ -165,9 +184,34 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
 
+          {/* Main College Marker */}
+          <div 
+            className="absolute"
+            style={{
+              left: `${geoToPixel(mapCenter.latitude, mapCenter.longitude).x}px`,
+              top: `${geoToPixel(mapCenter.latitude, mapCenter.longitude).y}px`,
+              transform: 'translate(-50%, -50%)',
+              zIndex: 15
+            }}
+          >
+            <div className="relative">
+              <div className="h-6 w-6 bg-blue-600 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                <div className="h-4 w-4 bg-white rounded-full"></div>
+              </div>
+              <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                <span className="text-[10px] font-semibold px-2 py-1 bg-blue-600 text-white rounded-full shadow-sm">
+                  Pragati Engineering College
+                </span>
+              </div>
+              <div className="absolute h-10 w-10 rounded-full border-4 border-blue-400/50 -top-2 -left-2 animate-ping"></div>
+            </div>
+          </div>
+
           {/* Bus stops */}
           {busStops.map(stop => {
             const { x, y } = geoToPixel(stop.location.latitude, stop.location.longitude);
+            const isMainStop = ['Pragati Engineering College', 'Surampalem Junction', 'Kakinada Bus Stand', 'Rajahmundry Bus Station'].includes(stop.name);
+
             return (
               <div 
                 key={stop.id}
@@ -175,15 +219,18 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }
                 style={{
                   left: `${x}px`,
                   top: `${y}px`,
-                  transform: 'translate(-50%, -50%)'
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: isMainStop ? 12 : 10
                 }}
               >
-                <div className="h-3 w-3 bg-neutral-400 dark:bg-neutral-300 rounded-full"></div>
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                  <span className="text-[10px] font-medium px-1.5 py-0.5 bg-white/80 dark:bg-neutral-800/80 backdrop-blur-xs rounded text-neutral-800 dark:text-neutral-200">
-                    {stop.name}
-                  </span>
-                </div>
+                <div className={`h-3 w-3 ${isMainStop ? 'bg-blue-400' : 'bg-neutral-400 dark:bg-neutral-300'} rounded-full ${isMainStop ? 'border-2 border-white' : ''}`}></div>
+                {zoom > 0.8 && (
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                    <span className="text-[9px] font-medium px-1.5 py-0.5 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm rounded text-neutral-800 dark:text-neutral-200">
+                      {stop.name}
+                    </span>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -212,21 +259,16 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }
                 }}
                 onClick={() => handleBusClick(bus)}
               >
-                <div className={`h-6 w-6 rounded-full flex items-center justify-center ${statusClass} shadow-lg`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <path d="M8 6v6"/>
-                    <path d="M15 6v6"/>
-                    <path d="M2 12h19.6"/>
-                    <path d="M18 18h3"/>
-                    <path d="M2 18h3"/>
-                    <rect x="5" y="2" width="13" height="20" rx="2"/>
-                  </svg>
+                <div className={`h-6 w-6 rounded-full flex items-center justify-center ${statusClass} shadow-lg ${isSelected ? 'ring-2 ring-white' : ''}`}>
+                  <BusIcon size={14} className="text-white" />
                 </div>
-                <div className="absolute top-7 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                  <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-white/90 dark:bg-neutral-800/90 rounded shadow-sm text-neutral-800 dark:text-neutral-200">
-                    {bus.busNumber}
-                  </span>
-                </div>
+                {zoom > 0.7 && (
+                  <div className="absolute top-7 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                    <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-white/90 dark:bg-neutral-800/90 rounded shadow-sm text-neutral-800 dark:text-neutral-200">
+                      {bus.busNumber}
+                    </span>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -236,26 +278,65 @@ const Map: React.FC<MapProps> = ({ selectedBus, onBusSelect, buses = mockBuses }
       {/* Map controls */}
       <div className="absolute bottom-4 right-4 flex flex-col space-y-2">
         <button 
-          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center"
+          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-600"
           onClick={() => setZoom(prev => Math.min(prev + 0.2, 3))}
+          aria-label="Zoom in"
         >
           <span className="text-xl">+</span>
         </button>
         <button 
-          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center"
+          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-600"
           onClick={() => setZoom(prev => Math.max(prev - 0.2, 0.5))}
+          aria-label="Zoom out"
         >
           <span className="text-xl">-</span>
         </button>
         <button 
-          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center"
+          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-600"
           onClick={() => {
             setPosition({ x: 0, y: 0 });
             setZoom(1);
           }}
+          aria-label="Reset view"
         >
           <Navigation className="h-4 w-4" />
         </button>
+        <button 
+          className="w-8 h-8 rounded-full bg-white dark:bg-neutral-700 shadow-md flex items-center justify-center transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-600"
+          onClick={toggleFullscreen}
+          aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+        >
+          {fullscreen ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
+        </button>
+      </div>
+
+      {/* Fullscreen close button */}
+      {fullscreen && (
+        <button 
+          className="absolute top-4 right-4 bg-white dark:bg-neutral-800 rounded-full p-2 shadow-md z-20"
+          onClick={toggleFullscreen}
+        >
+          <Minimize className="h-5 w-5" />
+        </button>
+      )}
+
+      {/* Map legend */}
+      <div className="absolute bottom-4 left-4 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm p-2 rounded-lg shadow-sm">
+        <div className="text-xs font-medium mb-1">Bus Status</div>
+        <div className="flex flex-col space-y-1">
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <span className="text-xs">Running</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+            <span className="text-xs">Delayed</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <span className="text-xs">Stopped</span>
+          </div>
+        </div>
       </div>
     </div>
   );
