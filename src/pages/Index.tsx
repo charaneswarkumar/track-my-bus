@@ -5,14 +5,14 @@ import SearchBar from '../components/SearchBar';
 import Map from '../components/Map';
 import BusList from '../components/BusList';
 import BusDetail from '../components/BusDetail';
-import { buses } from '../utils/mockData';
+import { allBuses as buses } from '../utils/mockData';
 import { Bus } from '../utils/types';
 import { toast } from '@/components/ui/use-toast';
 import { Bus as BusIcon, Calendar, Users } from 'lucide-react';
 
 const Index = () => {
   const [allBuses, setAllBuses] = useState<Bus[]>(buses);
-  const [filteredBuses, setFilteredBuses] = useState<Bus[]>(buses.slice(0, 10)); // Initially show only first 10 buses
+  const [filteredBuses, setFilteredBuses] = useState<Bus[]>(buses.slice(0, 20)); // Show first 20 buses
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
   const [showBusDetails, setShowBusDetails] = useState(false);
   const [searchActive, setSearchActive] = useState(false);

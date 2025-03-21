@@ -1,4 +1,3 @@
-
 import { Bus, BusRoute, BusStop, Driver, YearGroup } from './types';
 
 // Mock Drivers - Updated with the provided data
@@ -13,7 +12,6 @@ export const drivers: Driver[] = [
   { id: 'd8', name: 'G Chinnarao', phoneNumber: '+91 9876543217' },
   { id: 'd9', name: 'K Raviteja', phoneNumber: '+91 9876543218' },
   { id: 'd10', name: 'M Srinu', phoneNumber: '+91 9876543219' },
-  // Additional drivers as per the provided data
   { id: 'd11', name: 'S V Ramana', phoneNumber: '+91 9876543220' },
   { id: 'd12', name: 'Y Ganagadhar', phoneNumber: '+91 9876543221' },
   { id: 'd13', name: 'V Y Dasu', phoneNumber: '+91 9876543222' },
@@ -24,7 +22,67 @@ export const drivers: Driver[] = [
   { id: 'd18', name: 'K Simhachalam', phoneNumber: '+91 9876543227' },
   { id: 'd19', name: 'Md Karimullasha', phoneNumber: '+91 9876543228' },
   { id: 'd20', name: 'R Prabhakar', phoneNumber: '+91 9876543229' },
-  // And many more drivers from the list...
+  { id: 'd21', name: 'S Arjunarao', phoneNumber: '+91 9876543230' },
+  { id: 'd22', name: 'P Chandrarao', phoneNumber: '+91 9876543231' },
+  { id: 'd23', name: 'S Srinivasarao', phoneNumber: '+91 9876543232' },
+  { id: 'd24', name: 'M Veeraswamy', phoneNumber: '+91 9876543233' },
+  { id: 'd25', name: 'N Suribabu', phoneNumber: '+91 9876543234' },
+  { id: 'd26', name: 'R Yedukondalu', phoneNumber: '+91 9876543235' },
+  { id: 'd27', name: 'M Chandrarao', phoneNumber: '+91 9876543236' },
+  { id: 'd28', name: 'M Suryanarayana', phoneNumber: '+91 9876543237' },
+  { id: 'd29', name: 'P Satyanarayana', phoneNumber: '+91 9876543238' },
+  { id: 'd30', name: 'P R Govindu', phoneNumber: '+91 9876543239' },
+  { id: 'd31', name: 'B Vv Satish', phoneNumber: '+91 9876543240' },
+  { id: 'd32', name: 'K Lova', phoneNumber: '+91 9876543241' },
+  { id: 'd33', name: 'A Eswara Rao', phoneNumber: '+91 9876543242' },
+  { id: 'd34', name: 'V Mohanrao', phoneNumber: '+91 9876543243' },
+  { id: 'd35', name: 'R Brahmaji', phoneNumber: '+91 9876543244' },
+  { id: 'd36', name: 'K Prakash', phoneNumber: '+91 9876543245' },
+  { id: 'd37', name: 'P Chinnarao', phoneNumber: '+91 9876543246' },
+  { id: 'd38', name: 'Dhulla Vv Ramana', phoneNumber: '+91 9876543247' },
+  { id: 'd39', name: 'P Rambabu', phoneNumber: '+91 9876543248' },
+  { id: 'd40', name: 'S Subrahmanyam', phoneNumber: '+91 9876543249' },
+  { id: 'd41', name: 'Ch Rambabu', phoneNumber: '+91 9876543250' },
+  { id: 'd42', name: 'S Naresh Kumar', phoneNumber: '+91 9876543251' },
+  { id: 'd43', name: 'D S N Raju', phoneNumber: '+91 9876543252' },
+  { id: 'd44', name: 'A Apparao', phoneNumber: '+91 9876543253' },
+  { id: 'd45', name: 'D Haribabu', phoneNumber: '+91 9876543254' },
+  { id: 'd46', name: 'M Nookaraju', phoneNumber: '+91 9876543255' },
+  { id: 'd47', name: 'R Srinivasarao', phoneNumber: '+91 9876543256' },
+  { id: 'd48', name: 'A Narasimhamurthy', phoneNumber: '+91 9876543257' },
+  { id: 'd49', name: 'K N Murthy', phoneNumber: '+91 9876543258' },
+  { id: 'd50', name: 'V Somaraju', phoneNumber: '+91 9876543259' },
+  { id: 'd51', name: 'K Vv Satyanarayana', phoneNumber: '+91 9876543260' },
+  { id: 'd52', name: 'V Bujjibabu', phoneNumber: '+91 9876543261' },
+  { id: 'd53', name: 'B S Prakash', phoneNumber: '+91 9876543262' },
+  { id: 'd54', name: 'P Neeladri', phoneNumber: '+91 9876543263' },
+  { id: 'd55', name: 'V Dhanaram', phoneNumber: '+91 9876543264' },
+  { id: 'd56', name: 'T Lakshmu Naidu', phoneNumber: '+91 9876543265' },
+  { id: 'd57', name: 'D Bhavani Shankar', phoneNumber: '+91 9876543266' },
+  { id: 'd58', name: 'Ch Veeraswamy', phoneNumber: '+91 9876543267' },
+  { id: 'd59', name: 'G Saibabu', phoneNumber: '+91 9876543268' },
+  { id: 'd60', name: 'A Srinivasarao', phoneNumber: '+91 9876543269' },
+  { id: 'd61', name: 'M Satish', phoneNumber: '+91 9876543270' },
+  { id: 'd62', name: 'Diddi Vv Ramana', phoneNumber: '+91 9876543271' },
+  { id: 'd63', name: 'V V Ramana', phoneNumber: '+91 9876543272' },
+  { id: 'd64', name: 'D Dorababu', phoneNumber: '+91 9876543273' },
+  { id: 'd65', name: 'K Vasanth', phoneNumber: '+91 9876543274' },
+  { id: 'd66', name: 'K Suryanarayana', phoneNumber: '+91 9876543275' },
+  { id: 'd67', name: 'K Murali', phoneNumber: '+91 9876543276' },
+  { id: 'd68', name: 'M Nagaraju', phoneNumber: '+91 9876543277' },
+  { id: 'd69', name: 'B Anjibabu', phoneNumber: '+91 9876543278' },
+  { id: 'd70', name: 'Pilli Satyanarayana', phoneNumber: '+91 9876543279' },
+  { id: 'd71', name: 'Pediredla Rambabu', phoneNumber: '+91 9876543280' },
+  { id: 'd72', name: 'P V Subrahmanyam', phoneNumber: '+91 9876543281' },
+  { id: 'd73', name: 'Sk Pareesha', phoneNumber: '+91 9876543282' },
+  { id: 'd74', name: 'G Mruthunjaya', phoneNumber: '+91 9876543283' },
+  { id: 'd75', name: 'M Rajesh', phoneNumber: '+91 9876543284' },
+  { id: 'd76', name: 'E Prasad Babu', phoneNumber: '+91 9876543285' },
+  { id: 'd77', name: 'N Venkata Rao', phoneNumber: '+91 9876543286' },
+  { id: 'd78', name: 'D Satyanarayana', phoneNumber: '+91 9876543287' },
+  { id: 'd79', name: 'T Pradeep', phoneNumber: '+91 9876543288' },
+  { id: 'd80', name: 'G Ramakrishna', phoneNumber: '+91 9876543289' },
+  { id: 'd81', name: 'P Chandu', phoneNumber: '+91 9876543290' },
 ];
 
 // College and main towns location coordinates
@@ -94,10 +152,10 @@ export const busStops: BusStop[] = [
   // Add more stops as needed...
 ];
 
-// Create bus routes based on the provided data
+// Create additional bus routes for the new buses
 export const busRoutes: BusRoute[] = [
   {
-    id: 'r21', 
+    id: 'r21',
     routeNumber: '21',
     name: 'Pulagurtha-Machavaram-Someswaram-Lolla',
     stops: [busStops[0], busStops[17], busStops[18], busStops[19], busStops[20]],
@@ -166,210 +224,213 @@ export const busRoutes: BusRoute[] = [
     stops: [busStops[0], busStops[14]],
     description: 'Route 33 serving areas around Rayavaram'
   },
-  // Add more routes based on the data...
-];
-
-// Function to map years from string to YearGroup array
-function parseYears(yearStr: string): YearGroup[] {
-  if (yearStr === "STAFF") return ["STAFF"];
-  
-  return yearStr.split(',').map(y => {
-    const trimmed = y.trim();
-    if (trimmed === "I" || trimmed === "II" || trimmed === "III" || trimmed === "IV") {
-      return trimmed as YearGroup;
-    }
-    return "I" as YearGroup; // default fallback
-  });
-}
-
-// Generate buses based on the provided data
-export const buses: Bus[] = [
-  // First bus from data
+  // Additional routes for the new buses
   {
-    id: 'b1',
-    vehicleNumber: 'AP05TA0994',
-    busNumber: '21',
-    routeId: 'r21',
-    driverId: 'd1',
-    years: parseYears('I,II,III,IV'),
-    currentLocation: getLocationWithOffset(locations.pragatiEngCollege, 0.5),
-    currentSpeed: Math.floor(Math.random() * 40) + 20,
-    status: 'running',
-    capacity: 50,
-    estimatedArrival: '08:30 AM',
-    lastUpdated: new Date()
-  },
-  // Second bus
-  {
-    id: 'b2',
-    vehicleNumber: 'AP05TD7854',
-    busNumber: '70',
-    routeId: 'r70',
-    driverId: 'd2',
-    years: parseYears('II, III'),
-    currentLocation: getLocationWithOffset(locations.draksharamam, 0.3),
-    currentSpeed: Math.floor(Math.random() * 40) + 15,
-    status: 'running',
-    capacity: 50,
-    estimatedArrival: '08:45 AM',
-    lastUpdated: new Date()
-  },
-  // Third bus
-  {
-    id: 'b3',
-    vehicleNumber: 'AP05TA0996',
-    busNumber: '23',
-    routeId: 'r23',
-    driverId: 'd3',
-    years: parseYears('I'),
-    currentLocation: getLocationWithOffset(locations.mandapeta, 0.4),
-    currentSpeed: Math.floor(Math.random() * 40) + 18,
-    status: 'running',
-    capacity: 46,
-    estimatedArrival: '08:40 AM',
-    lastUpdated: new Date()
-  },
-  // Fourth bus
-  {
-    id: 'b4',
-    vehicleNumber: 'AP05TA0998',
-    busNumber: '24',
-    routeId: 'r24',
-    driverId: 'd4',
-    years: parseYears('II, III'),
-    currentLocation: getLocationWithOffset(locations.mandapeta, 0.6),
-    currentSpeed: Math.floor(Math.random() * 30) + 20,
-    status: 'delayed',
-    capacity: 46,
-    estimatedArrival: '09:00 AM',
-    lastUpdated: new Date()
-  },
-  // Fifth bus
-  {
-    id: 'b5',
-    vehicleNumber: 'AP05TA5278',
-    busNumber: '36',
-    routeId: 'r36',
-    driverId: 'd5',
-    years: parseYears('II'),
-    currentLocation: getLocationWithOffset(locations.biccavolu, 0.4),
-    currentSpeed: Math.floor(Math.random() * 40) + 22,
-    status: 'running',
-    capacity: 40,
-    estimatedArrival: '08:50 AM',
-    lastUpdated: new Date()
-  },
-  // And so on for other buses...
-  // For brevity, we'll add just a few more representative buses
-  {
-    id: 'b6',
-    vehicleNumber: 'AP05TA5279',
-    busNumber: '35',
-    routeId: 'r35',
-    driverId: 'd6',
-    years: parseYears('II,III,IV'),
-    currentLocation: getLocationWithOffset(locations.anaparthy, 0.5),
-    currentSpeed: Math.floor(Math.random() * 35) + 25,
-    status: 'running',
-    capacity: 40,
-    estimatedArrival: '08:35 AM',
-    lastUpdated: new Date()
+    id: 'r56',
+    routeNumber: '56',
+    name: 'Nadakuduru-Turangi',
+    stops: [busStops[0], busStops[12], busStops[14]],
+    description: 'Route 56 connecting Nadakuduru and Turangi'
   },
   {
-    id: 'b7',
-    vehicleNumber: 'AP05TA5280',
-    busNumber: '31',
-    routeId: 'r31',
-    driverId: 'd7',
-    years: parseYears('III'),
-    currentLocation: getLocationWithOffset(locations.anaparthy, 0.7),
-    currentSpeed: 0,
-    status: 'stopped',
-    capacity: 40,
-    estimatedArrival: '09:15 AM',
-    lastUpdated: new Date()
+    id: 'r57',
+    routeNumber: '57',
+    name: 'Pithapuram Only',
+    stops: [busStops[0], busStops[6]],
+    description: 'Route 57 serving only Pithapuram'
   },
   {
-    id: 'b8',
-    vehicleNumber: 'AP05TA5367',
-    busNumber: '32',
-    routeId: 'r32',
-    driverId: 'd8',
-    years: parseYears('I,II,III,IV'),
-    currentLocation: getLocationWithOffset(locations.surampalem, 0.3),
-    currentSpeed: Math.floor(Math.random() * 40) + 30,
-    status: 'running',
-    capacity: 50,
-    estimatedArrival: '08:20 AM',
-    lastUpdated: new Date()
+    id: 'r58',
+    routeNumber: '58',
+    name: 'Gokulam-Vidhyuthnagar-Sv Rangarao Statue-Rajendranagar',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 58 through Kakinada localities'
   },
   {
-    id: 'b9',
-    vehicleNumber: 'AP05TA5368',
-    busNumber: '34',
-    routeId: 'r34',
-    driverId: 'd9',
-    years: parseYears('I,II,III,IV'),
-    currentLocation: getLocationWithOffset(locations.pedapudi, 0.4),
-    currentSpeed: Math.floor(Math.random() * 30) + 20,
-    status: 'running',
-    capacity: 46,
-    estimatedArrival: '08:40 AM',
-    lastUpdated: new Date()
+    id: 'r59',
+    routeNumber: '59',
+    name: 'Anandh Complex-Ii Town Ps-Masid Center-Balajicheruvu-Tripurasundari Temple',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 59 through Kakinada city areas'
   },
   {
-    id: 'b10',
-    vehicleNumber: 'AP05TA5370',
-    busNumber: '33',
-    routeId: 'r33',
-    driverId: 'd10',
-    years: parseYears('II,III,IV'),
-    currentLocation: getLocationWithOffset(locations.rayavaram, 0.5),
-    currentSpeed: Math.floor(Math.random() * 25) + 15,
-    status: 'delayed',
-    capacity: 40,
-    estimatedArrival: '09:10 AM',
-    lastUpdated: new Date()
-  }
-];
-
-// Helper function to get bus details with related data
-export const getBusDetails = (busId: string) => {
-  const bus = buses.find(b => b.id === busId);
-  if (!bus) return null;
-  
-  const route = busRoutes.find(r => r.id === bus.routeId);
-  const driver = drivers.find(d => d.id === bus.driverId);
-  
-  return {
-    ...bus,
-    route,
-    driver,
-  };
-};
-
-// Helper function to get route details with all stops
-export const getRouteDetails = (routeId: string) => {
-  return busRoutes.find(r => r.id === routeId);
-};
-
-// Helper function to filter buses based on search criteria
-export const filterBuses = (query: string) => {
-  const searchTerm = query.toLowerCase();
-  
-  return buses.filter(bus => {
-    // Get related data
-    const route = busRoutes.find(r => r.id === bus.routeId);
-    const driver = drivers.find(d => d.id === bus.driverId);
-    
-    // Search in different fields
-    return (
-      bus.vehicleNumber.toLowerCase().includes(searchTerm) ||
-      bus.busNumber.toLowerCase().includes(searchTerm) ||
-      (route && route.name.toLowerCase().includes(searchTerm)) ||
-      (driver && driver.name.toLowerCase().includes(searchTerm)) ||
-      bus.status.toLowerCase().includes(searchTerm) ||
-      bus.years.some(year => year.toLowerCase().includes(searchTerm))
-    );
-  });
-};
+    id: 'r60',
+    routeNumber: '60',
+    name: 'Nookalamma Temple-Subbayya Hotel-Gandhipark-Ontimamidi Jn',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 60 through Kakinada city areas'
+  },
+  {
+    id: 'r61',
+    routeNumber: '61',
+    name: 'Sambhamurthy Nagar-Kalpana Jn-Tripurasundari Temple',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 61 through Kakinada city areas'
+  },
+  {
+    id: 'r62',
+    routeNumber: '62',
+    name: 'Dmart-Venkatnagar-Kokila-Sp Off-Ashram School',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 62 through Kakinada city areas'
+  },
+  {
+    id: 'r63',
+    routeNumber: '63',
+    name: 'Rto Off Rd-Gangaraju Nagar-Ramanayyapeta Market',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 63 through Kakinada city areas'
+  },
+  {
+    id: 'r64',
+    routeNumber: '64',
+    name: 'Dmart-Venkatnagar-Kokila-Sp Off-Ashram School',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 64 through Kakinada city areas'
+  },
+  {
+    id: 'r20',
+    routeNumber: '20',
+    name: 'Samalkota From Cbm Center To Matam Center Mehar Complex',
+    stops: [busStops[0], busStops[5]],
+    description: 'Route 20 serving Samalkota'
+  },
+  {
+    id: 'r67',
+    routeNumber: '67',
+    name: 'Turangi Indrapalem Musalammatemple-Z Bridge-Pratapnagar Bridge',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 67 through city areas'
+  },
+  {
+    id: 'r68',
+    routeNumber: '68',
+    name: 'Yeleswaram-Yarravaram-Krishnapuram-Burugupudi-Ramavaram',
+    stops: [busStops[0], busStops[15]],
+    description: 'Route 68 through northern villages'
+  },
+  {
+    id: 'r69',
+    routeNumber: '69',
+    name: 'Ramachandrapuram Nr Peta Mamidada Biccavolu',
+    stops: [busStops[0], busStops[25], busStops[26], busStops[11]],
+    description: 'Route 69 serving Ramachandrapuram area'
+  },
+  {
+    id: 'r12',
+    routeNumber: '12',
+    name: 'Karapa-Penuguduru',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 12 through Karapa and Penuguduru'
+  },
+  {
+    id: 'r71',
+    routeNumber: '71',
+    name: 'Ganaganapalli Center-Kovvada-Rameswaram-Madhavapatnam',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 71 through coastal villages'
+  },
+  {
+    id: 'r72',
+    routeNumber: '72',
+    name: 'Narsaraopeta-Mamidada-Biccavolu',
+    stops: [busStops[0], busStops[26], busStops[11]],
+    description: 'Route 72 serving Mamidada and Biccavolu'
+  },
+  {
+    id: 'r73',
+    routeNumber: '73',
+    name: 'Draksharamam-Tallapalem',
+    stops: [busStops[0], busStops[16], busStops[21]],
+    description: 'Route 73 connecting to Draksharamam and Tallapalem'
+  },
+  {
+    id: 'r74',
+    routeNumber: '74',
+    name: 'Staff Kkd',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 74 for staff from Kakinada'
+  },
+  {
+    id: 'r75',
+    routeNumber: '75',
+    name: 'Pithapuram By Pass-Padagaya-Kumarapuram Fk Plem-Jalluru',
+    stops: [busStops[0], busStops[6]],
+    description: 'Route 75 through Pithapuram and villages'
+  },
+  {
+    id: 'r76',
+    routeNumber: '76',
+    name: 'Gaigolupadu Sarpavaram Villege',
+    stops: [busStops[0], busStops[7]],
+    description: 'Route 76 through Gaigolupadu and Sarpavaram'
+  },
+  // Add more routes for all 81 buses...
+  {
+    id: 'r77',
+    routeNumber: '77',
+    name: 'Valasapakala Agarwal Center Kothur Jn Atchampeta Jn',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 77 through city areas'
+  },
+  {
+    id: 'r65',
+    routeNumber: '65',
+    name: 'Sambhamurthy Nagar-Kalpana Jn-Tripurasundari Temple',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 65 through city areas'
+  },
+  {
+    id: 'r79',
+    routeNumber: '79',
+    name: 'Nookalamma Temple-Subbayya Hotel-Gandhipark-Ontimamidi Jn',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 79 through city areas'
+  },
+  {
+    id: 'r80',
+    routeNumber: '80',
+    name: 'Ii Town-Apollo Hospital-Masid Center-Gold Market-Temple Street',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 80 through city areas'
+  },
+  {
+    id: 'r78',
+    routeNumber: '78',
+    name: 'Vadlamuru-Ragampeta-Samalkota-Peddapuram',
+    stops: [busStops[0], busStops[5], busStops[12]],
+    description: 'Route 78 through multiple towns'
+  },
+  {
+    id: 'r81',
+    routeNumber: '81',
+    name: 'Staff Kkd',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 81 for staff from Kakinada'
+  },
+  {
+    id: 'r83',
+    routeNumber: '83',
+    name: 'Morampudi-Sainagar-Ongc Highway (Rjy)',
+    stops: [busStops[0], busStops[3]],
+    description: 'Route 83 to Rajahmundry through Morampudi'
+  },
+  {
+    id: 'r84',
+    routeNumber: '84',
+    name: 'Medapadu-Vetlapalem',
+    stops: [busStops[0], busStops[2]],
+    description: 'Route 84 through coastal villages'
+  },
+  {
+    id: 'r85',
+    routeNumber: '85',
+    name: 'Gollaprolu-Rayavaram-Bhogapuram',
+    stops: [busStops[0], busStops[7], busStops[14]],
+    description: 'Route 85 through Gollaprolu and surrounding villages'
+  },
+  {
+    id: 'r86',
+    routeNumber: '86',
+    name: 'Msn Charties-Munasib Jn-Jk Pur Bridge',
+    stops: [busStops[0], busStops[2]],
