@@ -959,7 +959,7 @@ export const getRouteDetails = (routeId: string) => {
   return busRoutes.find(r => r.id === routeId) || null;
 };
 
-// New function to filter buses based on search query
+// New function to filter buses based only on route number
 export const filterBuses = (query: string): Bus[] => {
   if (!query || query.trim() === '') {
     return [];
@@ -968,33 +968,7 @@ export const filterBuses = (query: string): Bus[] => {
   const lowercaseQuery = query.toLowerCase().trim();
   
   return allBuses.filter(bus => {
-    // Search by bus number
-    if (bus.busNumber.toLowerCase().includes(lowercaseQuery)) {
-      return true;
-    }
-    
-    // Search by vehicle number
-    if (bus.vehicleNumber.toLowerCase().includes(lowercaseQuery)) {
-      return true;
-    }
-    
-    // Search by route name
-    const route = busRoutes.find(r => r.id === bus.routeId);
-    if (route && route.name.toLowerCase().includes(lowercaseQuery)) {
-      return true;
-    }
-    
-    // Search by driver name
-    const driver = drivers.find(d => d.id === bus.driverId);
-    if (driver && driver.name.toLowerCase().includes(lowercaseQuery)) {
-      return true;
-    }
-    
-    // Search by year
-    if (bus.years.some(year => year.toLowerCase().includes(lowercaseQuery))) {
-      return true;
-    }
-    
-    return false;
+    // Only search by bus number (route number)
+    return bus.busNumber.toLowerCase().includes(lowercaseQuery);
   });
 };

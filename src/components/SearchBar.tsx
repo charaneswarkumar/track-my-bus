@@ -41,7 +41,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search buses, routes, or drivers..."
+          placeholder="Search by route number..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
