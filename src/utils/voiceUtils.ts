@@ -1,4 +1,3 @@
-
 import { Bus, BusRoute } from './types';
 import { busRoutes } from './mockData';
 
@@ -43,19 +42,71 @@ export const processVoiceCommand = (command: string, buses: Bus[]): CommandResul
  * Handle bus location queries
  */
 const handleLocationQuery = (command: string, buses: Bus[]): CommandResult => {
-  // Extract bus number from command
-  const busNumberMatch = command.match(/bus (\d+)/i) || command.match(/(\d+)/);
+  // Extract bus number from command with improved pattern matching
+  // Look for patterns like "bus 5", "bus number 5", "#5", or just "5" when in context
+  const busNumberMatch = 
+    command.match(/bus (\d+)/i) || 
+    command.match(/bus number (\d+)/i) || 
+    command.match(/#(\d+)/i);
+  
+  let busNumber = null;
   
   if (busNumberMatch && busNumberMatch[1]) {
-    const busNumber = busNumberMatch[1];
-    const bus = buses.find(b => b.busNumber === busNumber || b.busNumber.includes(busNumber));
-    
-    if (bus) {
+    busNumber = busNumberMatch[1];
+  } else {
+    // If no specific pattern matches, look for standalone digits
+    // This should only be used when we're confident it's a bus number context
+    const digitsMatch = command.match(/\b(\d+)\b/g);
+    if (digitsMatch) {
+      // Take the first number found as the bus number
+      busNumber = digitsMatch[0];
+    }
+  }
+  
+  if (busNumber) {
+    // Exact match for single-digit bus numbers
+    const exactBus = buses.find(b => b.busNumber === busNumber);
+    if (exactBus) {
       // Get route information
-      const route = busRoutes.find(r => r.id === bus.routeId);
+      const route = busRoutes.find(r => r.id === exactBus.routeId);
       const routeName = route ? route.name : "unknown route";
       
       // Format response based on bus status
+      let response = '';
+      switch (exactBus.status) {
+        case 'running':
+          response = `Bus number ${exactBus.busNumber} is currently running on ${routeName} and will arrive at the college in approximately ${exactBus.estimatedArrival}.`;
+          break;
+        case 'delayed':
+          response = `Bus number ${exactBus.busNumber} is currently delayed on ${routeName}. The new estimated arrival time is ${exactBus.estimatedArrival}.`;
+          break;
+        case 'stopped':
+          response = `Bus number ${exactBus.busNumber} is currently stopped. Please check with the transportation office for more details.`;
+          break;
+        default:
+          response = `Bus number ${exactBus.busNumber} is on ${routeName} and will arrive in ${exactBus.estimatedArrival}.`;
+      }
+      
+      return { response, bus: exactBus };
+    }
+    
+    // If not an exact match, try partial match but with caution for single digits
+    const isSingleDigit = busNumber.length === 1;
+    const matchingBuses = buses.filter(b => {
+      if (isSingleDigit) {
+        // For single digits, only match if it starts with that digit and not part of a double-digit number
+        return b.busNumber === busNumber || (b.busNumber.startsWith(busNumber) && b.busNumber.length === 1);
+      } else {
+        // For multi-digit numbers, partial matching is fine
+        return b.busNumber.includes(busNumber);
+      }
+    });
+    
+    if (matchingBuses.length === 1) {
+      const bus = matchingBuses[0];
+      const route = busRoutes.find(r => r.id === bus.routeId);
+      const routeName = route ? route.name : "unknown route";
+      
       let response = '';
       switch (bus.status) {
         case 'running':
@@ -72,6 +123,11 @@ const handleLocationQuery = (command: string, buses: Bus[]): CommandResult => {
       }
       
       return { response, bus };
+    } else if (matchingBuses.length > 1) {
+      const busNumbers = matchingBuses.map(b => b.busNumber).join(', ');
+      return { 
+        response: `I found multiple buses matching number ${busNumber}. The available buses are: ${busNumbers}. Please specify which one you're looking for.` 
+      };
     } else {
       return { response: `I couldn't find information for bus number ${busNumber}. Please check the bus number and try again.` };
     }
@@ -93,14 +149,61 @@ const handleLocationQuery = (command: string, buses: Bus[]): CommandResult => {
  * Handle bus arrival time queries
  */
 const handleArrivalQuery = (command: string, buses: Bus[]): CommandResult => {
-  // Extract bus number from command
-  const busNumberMatch = command.match(/bus (\d+)/i) || command.match(/(\d+)/);
+  // Extract bus number with improved pattern matching
+  const busNumberMatch = 
+    command.match(/bus (\d+)/i) || 
+    command.match(/bus number (\d+)/i) || 
+    command.match(/#(\d+)/i);
+  
+  let busNumber = null;
   
   if (busNumberMatch && busNumberMatch[1]) {
-    const busNumber = busNumberMatch[1];
-    const bus = buses.find(b => b.busNumber === busNumber || b.busNumber.includes(busNumber));
+    busNumber = busNumberMatch[1];
+  } else {
+    // If no specific pattern matches, look for standalone digits
+    const digitsMatch = command.match(/\b(\d+)\b/g);
+    if (digitsMatch) {
+      // Take the first number found as the bus number
+      busNumber = digitsMatch[0];
+    }
+  }
+  
+  if (busNumber) {
+    // Exact match for single-digit bus numbers
+    const exactBus = buses.find(b => b.busNumber === busNumber);
+    if (exactBus) {
+      let response = '';
+      switch (exactBus.status) {
+        case 'running':
+          response = `Bus number ${exactBus.busNumber} will arrive in approximately ${exactBus.estimatedArrival}.`;
+          break;
+        case 'delayed':
+          response = `Bus number ${exactBus.busNumber} is delayed and will arrive in approximately ${exactBus.estimatedArrival}.`;
+          break;
+        case 'stopped':
+          response = `Bus number ${exactBus.busNumber} is currently stopped and not in service. Please check with the transportation office for alternative options.`;
+          break;
+        default:
+          response = `Bus number ${exactBus.busNumber} will arrive in ${exactBus.estimatedArrival}.`;
+      }
+      
+      return { response, bus: exactBus };
+    }
     
-    if (bus) {
+    // If not an exact match, try partial match but with caution for single digits
+    const isSingleDigit = busNumber.length === 1;
+    const matchingBuses = buses.filter(b => {
+      if (isSingleDigit) {
+        // For single digits, only match if it starts with that digit and not part of a double-digit number
+        return b.busNumber === busNumber || (b.busNumber.startsWith(busNumber) && b.busNumber.length === 1);
+      } else {
+        // For multi-digit numbers, partial matching is fine
+        return b.busNumber.includes(busNumber);
+      }
+    });
+    
+    if (matchingBuses.length === 1) {
+      const bus = matchingBuses[0];
       let response = '';
       switch (bus.status) {
         case 'running':
@@ -117,6 +220,11 @@ const handleArrivalQuery = (command: string, buses: Bus[]): CommandResult => {
       }
       
       return { response, bus };
+    } else if (matchingBuses.length > 1) {
+      const busNumbers = matchingBuses.map(b => b.busNumber).join(', ');
+      return { 
+        response: `I found multiple buses matching number ${busNumber}. The available buses are: ${busNumbers}. Please specify which one you're looking for.` 
+      };
     } else {
       return { response: `I couldn't find arrival information for bus number ${busNumber}.` };
     }
