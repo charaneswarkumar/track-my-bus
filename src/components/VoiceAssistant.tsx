@@ -5,6 +5,10 @@ import { filterBuses } from '../utils/mockData';
 import { processVoiceCommand } from '../utils/voiceUtils';
 import { Bus } from '../utils/types';
 
+// Import SpeechRecognition type from the declarations file
+// This ensures TypeScript can find the type
+type SpeechRecognition = import('../types/speechRecognition').SpeechRecognition;
+
 interface VoiceAssistantProps {
   buses: Bus[];
   onBusSelect?: (bus: Bus) => void;
@@ -16,7 +20,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ buses, onBusSelect }) =
   const [transcript, setTranscript] = useState('');
   const [response, setResponse] = useState('');
   const [isMuted, setIsMuted] = useState(false);
-  // Fix the type declaration by adding the explicit type from our d.ts file
+  // Now TypeScript should recognize the SpeechRecognition type
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const speechSynthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
