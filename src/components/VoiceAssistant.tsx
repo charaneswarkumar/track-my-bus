@@ -16,6 +16,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ buses, onBusSelect }) =
   const [transcript, setTranscript] = useState('');
   const [response, setResponse] = useState('');
   const [isMuted, setIsMuted] = useState(false);
+  // Fix the type declaration by adding the explicit type from our d.ts file
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const speechSynthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
