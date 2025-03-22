@@ -201,6 +201,26 @@ export const allBuses: Bus[] = [
   // ... more buses as needed
 ];
 
+// Function to get the details of a specific bus
+export const getBusDetails = (busId: string) => {
+  const bus = allBuses.find(b => b.id === busId);
+  if (!bus) return null;
+  
+  const route = busRoutes.find(r => r.id === bus.routeId);
+  const driver = drivers.find(d => d.id === bus.driverId);
+  
+  return {
+    bus,
+    route,
+    driver
+  };
+};
+
+// Function to get the details of a specific route
+export const getRouteDetails = (routeId: string) => {
+  return busRoutes.find(r => r.id === routeId);
+};
+
 // Filter buses by route number
 export const filterBuses = (query: string): Bus[] => {
   if (!query || query.trim() === '') {

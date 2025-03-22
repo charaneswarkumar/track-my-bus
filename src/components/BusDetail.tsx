@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Bus as BusType, BusRoute, Driver } from '../utils/types';
-import { getBusDetails, getRouteDetails } from '../utils/mockData';
+import { getBusDetails } from '../utils/mockData';
 import { User, MapPin, Phone, Clock, Route, X, Bus as BusIcon, Calendar, Fuel, Users } from 'lucide-react';
 
 interface BusDetailProps {
@@ -10,12 +11,13 @@ interface BusDetailProps {
 
 const BusDetail: React.FC<BusDetailProps> = ({ bus, onClose }) => {
   const busDetails = getBusDetails(bus.id);
-  const route = busDetails?.route as BusRoute | undefined;
-  const driver = busDetails?.driver as Driver | undefined;
   
-  if (!busDetails || !route || !driver) {
+  if (!busDetails || !busDetails.route || !busDetails.driver) {
     return <div>Bus details not found</div>;
   }
+  
+  const route = busDetails.route;
+  const driver = busDetails.driver;
   
   const getStatusClass = (status: string) => {
     switch (status) {
