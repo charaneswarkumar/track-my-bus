@@ -1,13 +1,11 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Mic, MicOff, Volume2, Volume1, VolumeX } from 'lucide-react';
 import { filterBuses } from '../utils/mockData';
 import { processVoiceCommand } from '../utils/voiceUtils';
 import { Bus } from '../utils/types';
 
-// Import SpeechRecognition type from the declarations file
-// This ensures TypeScript can find the type
-type SpeechRecognition = import('../types/speechRecognition').SpeechRecognition;
+// Using a proper import type to fix the TypeScript error
+import type { SpeechRecognition as SpeechRecognitionType } from '../types/speechRecognition';
 
 interface VoiceAssistantProps {
   buses: Bus[];
@@ -20,8 +18,8 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ buses, onBusSelect }) =
   const [transcript, setTranscript] = useState('');
   const [response, setResponse] = useState('');
   const [isMuted, setIsMuted] = useState(false);
-  // Now TypeScript should recognize the SpeechRecognition type
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  // Use the imported type
+  const recognitionRef = useRef<SpeechRecognitionType | null>(null);
   const speechSynthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   // Initialize speech recognition
