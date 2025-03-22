@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 import { filterBuses } from '../utils/mockData';
 import { Bus } from '../utils/types';
@@ -13,20 +13,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Memoize the search handler to prevent infinite update loops
-  const handleSearch = useCallback((searchQuery: string) => {
-    if (searchQuery.trim() === '') {
+  useEffect(() => {
+    if (query.trim() === '') {
       onSearchResults([]);
       return;
     }
     
-    const results = filterBuses(searchQuery);
+    const results = filterBuses(query);
     onSearchResults(results);
-  }, [onSearchResults]);
-
-  useEffect(() => {
-    handleSearch(query);
-  }, [query, handleSearch]);
+  }, [query, onSearchResults]);
 
   const handleClearSearch = () => {
     setQuery('');
