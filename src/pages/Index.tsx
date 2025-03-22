@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import Map from '../components/Map';
 import BusList from '../components/BusList';
 import BusDetail from '../components/BusDetail';
+import VoiceAssistant from '../components/VoiceAssistant';
 import { allBuses as buses } from '../utils/mockData';
 import { Bus } from '../utils/types';
 import { toast } from '@/components/ui/use-toast';
@@ -226,6 +227,13 @@ const Index = () => {
                   {filteredBuses.length} / {allBuses.length} buses
                 </span>
               </div>
+            </div>
+            
+            <div className="mb-4">
+              <VoiceAssistant 
+                buses={allBuses}
+                onBusSelect={handleBusSelect}
+              />
             </div>
             
             {showBusDetails && selectedBus ? (
