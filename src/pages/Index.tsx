@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
@@ -18,15 +17,11 @@ const Index = () => {
   const [showBusDetails, setShowBusDetails] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
   
-  // Update bus locations every few seconds (simulate real-time updates)
   useEffect(() => {
     const interval = setInterval(() => {
-      // In a real application, this would fetch real-time data from an API
-      // For this mock, we'll just slightly modify the current locations to simulate movement
       setAllBuses(prevBuses => 
         prevBuses.map(bus => {
           if (bus.status === 'running') {
-            // Small random movement
             const latDelta = (Math.random() - 0.5) * 0.005;
             const lngDelta = (Math.random() - 0.5) * 0.005;
             
@@ -43,7 +38,6 @@ const Index = () => {
         })
       );
       
-      // Occasionally change a bus status for demonstration
       if (Math.random() > 0.95) {
         const randomIndex = Math.floor(Math.random() * allBuses.length);
         const statuses: Array<'running' | 'delayed' | 'stopped'> = ['running', 'delayed', 'stopped'];
@@ -57,13 +51,14 @@ const Index = () => {
               status: newStatus
             };
             
-            // Show toast notification for status change
-            toast({
-              title: `Status Update: Bus ${newBuses[randomIndex].busNumber}`,
-              description: `Bus is now ${newStatus}`,
-              variant: newStatus === 'running' ? 'default' : 'destructive',
-              duration: 3000
-            });
+            if (prevBuses.length > 0) {
+              toast({
+                title: `Status Update: Bus ${newBuses[randomIndex].busNumber}`,
+                description: `Bus is now ${newStatus}`,
+                variant: newStatus === 'running' ? 'default' : 'destructive',
+                duration: 3000
+              });
+            }
           }
           return newBuses;
         });
@@ -73,7 +68,6 @@ const Index = () => {
     return () => clearInterval(interval);
   }, [allBuses]);
   
-  // Update filtered buses when search is not active
   useEffect(() => {
     if (!searchActive) {
       setFilteredBuses(allBuses.slice(0, 50)); // Show first 50 buses when not searching
@@ -82,7 +76,6 @@ const Index = () => {
   
   const handleSearchResults = (results: Bus[]) => {
     if (results.length === 0 && !searchActive) {
-      // If no search results and search is not active, show first 50 buses
       setFilteredBuses(allBuses.slice(0, 50));
     } else {
       setFilteredBuses(results);
@@ -94,7 +87,6 @@ const Index = () => {
     setSelectedBus(bus);
     setShowBusDetails(true);
     
-    // Add selected bus to filtered list if it's not already there
     if (!filteredBuses.some(b => b.id === bus.id)) {
       setFilteredBuses(prev => [bus, ...prev]);
     }
@@ -105,12 +97,10 @@ const Index = () => {
     setSelectedBus(null);
   };
   
-  // Calculate bus statistics
   const runningBuses = allBuses.filter(bus => bus.status === 'running').length;
   const delayedBuses = allBuses.filter(bus => bus.status === 'delayed').length;
   const stoppedBuses = allBuses.filter(bus => bus.status === 'stopped').length;
   
-  // Calculate seats by capacity type (as shown in the data table)
   const seatsType50 = allBuses.filter(bus => bus.capacity === 50).length * 50;
   const seatsType46 = allBuses.filter(bus => bus.capacity === 46).length * 46;
   const seatsType40 = allBuses.filter(bus => bus.capacity === 40).length * 40;
@@ -128,7 +118,6 @@ const Index = () => {
           Buses Routes for the AY 2024-25 • {allBuses.length} total buses
         </p>
         
-        {/* Stats cards before the map */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <div className="neo-card p-4">
             <div className="flex items-center justify-between">

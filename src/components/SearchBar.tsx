@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, MapPin, Clock, User, Phone, Route } from 'lucide-react';
 import { filterBuses, getBusDetails, getRouteDetails } from '../utils/mockData';
@@ -20,23 +19,31 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults, onBusSelect }) =
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
   const [showDetails, setShowDetails] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [debouncedQuery, setDebouncedQuery] = useState('');
 
   useEffect(() => {
-    if (query.trim() === '') {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+  
+  useEffect(() => {
+    if (debouncedQuery.trim() === '') {
       setResults([]);
       onSearchResults([]);
       return;
     }
     
-    const searchResults = filterBuses(query);
+    const searchResults = filterBuses(debouncedQuery);
     setResults(searchResults);
     onSearchResults(searchResults);
     
-    // Open popover when there are results
     if (searchResults.length > 0) {
       setOpen(true);
     }
-  }, [query, onSearchResults]);
+  }, [debouncedQuery, onSearchResults]);
 
   const handleClearSearch = () => {
     setQuery('');
@@ -53,7 +60,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults, onBusSelect }) =
     setSelectedBus(bus);
     setShowDetails(true);
     
-    // Call both callbacks to ensure the bus is selected everywhere
     onSearchResults([bus]);
     if (onBusSelect) {
       onBusSelect(bus);
@@ -61,7 +67,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults, onBusSelect }) =
     
     setOpen(false);
     
-    // Show toast notification
     toast({
       title: `Bus ${bus.busNumber} Selected`,
       description: `Status: ${bus.status}`,
