@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
@@ -101,6 +102,7 @@ const Index = () => {
   
   const handleCloseBusDetails = () => {
     setShowBusDetails(false);
+    setSelectedBus(null);
   };
   
   // Calculate bus statistics
@@ -180,13 +182,16 @@ const Index = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <div className="mb-4">
-              <SearchBar onSearchResults={handleSearchResults} />
+              <SearchBar 
+                onSearchResults={handleSearchResults} 
+                onBusSelect={handleBusSelect} 
+              />
             </div>
             
             <Map 
               selectedBus={selectedBus} 
               onBusSelect={handleBusSelect} 
-              buses={allBuses}
+              buses={filteredBuses.length > 0 ? filteredBuses : allBuses.slice(0, 50)}
             />
             
             <div className="mt-4 flex flex-wrap justify-between items-center">
@@ -242,12 +247,19 @@ const Index = () => {
                 onClose={handleCloseBusDetails}
               />
             ) : (
-              <div className="flex-1 overflow-hidden neo-card">
-                <BusList 
-                  buses={filteredBuses}
-                  selectedBus={selectedBus}
-                  onBusSelect={handleBusSelect}
-                />
+              <div className="flex-1 overflow-hidden neo-card flex flex-col">
+                <div className="p-3 border-b border-neutral-100 dark:border-neutral-700">
+                  <h3 className="text-sm font-medium text-neutral-800 dark:text-white">
+                    Available Bus Routes
+                  </h3>
+                </div>
+                <div className="flex-1 overflow-auto">
+                  <BusList 
+                    buses={filteredBuses}
+                    selectedBus={selectedBus}
+                    onBusSelect={handleBusSelect}
+                  />
+                </div>
               </div>
             )}
           </div>

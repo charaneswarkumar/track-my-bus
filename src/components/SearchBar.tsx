@@ -5,12 +5,14 @@ import { filterBuses, getBusDetails, getRouteDetails } from '../utils/mockData';
 import { Bus, BusRoute, Driver } from '../utils/types';
 import { Command, CommandGroup, CommandItem, CommandList, CommandEmpty } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { toast } from '@/components/ui/use-toast';
 
 interface SearchBarProps {
   onSearchResults: (results: Bus[]) => void;
+  onBusSelect?: (bus: Bus) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults, onBusSelect }) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [open, setOpen] = useState(false);
@@ -50,8 +52,21 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
     setQuery(bus.busNumber);
     setSelectedBus(bus);
     setShowDetails(true);
+    
+    // Call both callbacks to ensure the bus is selected everywhere
     onSearchResults([bus]);
+    if (onBusSelect) {
+      onBusSelect(bus);
+    }
+    
     setOpen(false);
+    
+    // Show toast notification
+    toast({
+      title: `Bus ${bus.busNumber} Selected`,
+      description: `Status: ${bus.status}`,
+      duration: 3000
+    });
   };
 
   const handleCloseDetails = () => {
@@ -60,6 +75,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
+  };
+
+  const handleViewFullDetails = (bus: Bus) => {
+    if (onBusSelect) {
+      onBusSelect(bus);
+    }
+    setShowDetails(false);
   };
 
   const getStatusClass = (status: string) => {
@@ -168,7 +190,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchResults }) => {
           </div>
           
           <button
-            onClick={() => { onSearchResults([selectedBus]); setShowDetails(false); }}
+            onClick={() => handleViewFullDetails(selectedBus)}
             className="w-full mt-2 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-800/30 text-blue-800 dark:text-blue-400 text-xs font-medium py-2 rounded-md transition-colors"
           >
             View Full Details
